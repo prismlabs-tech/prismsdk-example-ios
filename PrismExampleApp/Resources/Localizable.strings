@@ -1,0 +1,146 @@
+/*
+ * Copyright (c) Prismlabs, Inc. and affiliates.
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/* Generic */
+"Button.Continue" = "Continue";
+"Button.Done" = "Done";
+"Button.LearnMore" = "Learn More";
+"Button.ShowMore" = "Show More";
+"Button.NewScan" = "Begin New Scan";
+"Button.Logout" = "Logout";
+
+/* Sorting */
+"Sorting.Latest" = "Latest";
+"Sorting.Newest" = "Newest";
+"SortBy" = "Sort by:";
+
+/* Body Scan Items */
+"BodyScanType.fatMassPercentage" = "Body Fat %";
+"BodyScanType.leanMassPercentage" = "Lean Mass %";
+"BodyScanType.fatMass" = "Fat Mass";
+"BodyScanType.leanMass" = "Lean Mass";
+"BodyScanType.weight" = "Weight";
+"BodyScanType.bodyFat" = "Body Fat %";
+
+"BodyScanType.neck" = "Neck";
+"BodyScanType.upperChest" = "Upper Chest";
+"BodyScanType.chest" = "Chest";
+
+"BodyScanType.waistToHip" = "Waist-to-Hip Ratio";
+"BodyScanType.waist" = "Waist";
+"BodyScanType.hips" = "Hips";
+"BodyScanType.shoulders" = "Shoulders";
+
+"BodyScanType.leftBicep" = "Left Bicep";
+"BodyScanType.rightBicep" = "Right Bicep";
+
+"BodyScanType.leftUpperThigh" = "Left Upper Thigh";
+"BodyScanType.rightUpperThigh" = "Right Upper Thigh";
+"BodyScanType.leftLowerThigh" = "Left Lower Thigh";
+"BodyScanType.rightLowerThigh" = "Right Lower Thigh";
+"BodyScanType.leftThigh" = "Left Thigh";
+"BodyScanType.rightThigh" = "Right Thigh";
+"BodyScanType.leftCalf" = "Left Calf";
+"BodyScanType.rightCalf" = "Right Calf";
+
+/* User Info */
+"UserSex.Male" = "Male";
+"UserSex.Female" = "Female";
+"UserSex.NonBinary" = "Non-binary";
+
+/* Onboarding / Profile */
+"Profile.Title" = "Get Started";
+"Profile.Subtitle" = "To get the most reliable body map reports, fill out the prompts below.";
+"Profile.Form.Email" = "Email";
+"Profile.Form.EmailPlaceholder" = "Enter your email address";
+"Profile.Form.Sex" = "Sex";
+"Profile.Form.Height" = "Height";
+"Profile.Form.Weight" = "Weight";
+"Profile.Form.Age" = "Age";
+"%lld Profile.Form.Age.Value" = "%lld years old";
+"Profile.LogoutInformation" = "Logging out will clear all of the app cache and reset the app into the onboarding state.";
+"Profile.DoneButton.Title" = "Done";
+"Profile.NavigationBar.Title" = "Profile";
+
+/* Terms and Conditions */
+"Terms.Title" = "We take your privacy and security seriously";
+"Terms.Subtitle" = "Short description of the Fitness Users Privacy Terms.";
+
+"Terms.Button.Title" = "Privacy Policy and Terms & Conditions";
+
+"Terms.Checkbox.Title" = "I agree to Privacy Policy & Terms and Conditions.";
+"Terms.DataSharing.Checkbox.Title" = "I agree to sharing my data with Prism Labs Inc. for the sole purpose of improving its products and services.";
+
+/* How To */
+"HowTo.Title" = "How Body Mapping Works";
+"HowTo.Subtitle" = "Follow these tips for the best results";
+
+"HowTo.PrepareYourselfTitle" = "Prepare Yourself";
+"HowTo.PrepareYourselfDescription" = "Wear form-fitting clothes and keep hair off your shoulders and face.";
+
+"HowTo.PrepareSpaceTitle" = "Prepare Your Space";
+"HowTo.PrepareSpaceDescription" = "Find a blank wall in a space about 6x6 feet, clear of furniture & objects.";
+
+"HowTo.PreparePhoneTitle" = "Prepare Your Phone";
+"HowTo.PreparePhoneDescription" = "Lean your phone facing you against an object at waist height.";
+
+"HowTo.StartTitle" = "Start Your Body Map";
+"HowTo.StartDescription" = "To map your body, stand straight with arms out slightly (to form an \"A\" shape). You'll rotate 360º in about 10 seconds.";
+
+/* Scan Card View */
+"NewScanCard.Title" = "How to prepare for your next map";
+"NewScanCard.Subtitle" = "Follow the instructions from your previous map for your next one. ";
+"NewScanCard.Subtitle.Action" = "Show me the body mapping instructions again.";
+
+"NewScanCard.Checklist.Title" = "Body Mapping Checklist";
+"NewScanCard.Checklist.Volume" = "Turn volume up";
+"NewScanCard.Checklist.FaceCovering" = "Don’t wear face coverings";
+"NewScanCard.Checklist.Hair" = "Tie hair above shoulders and neck";
+"NewScanCard.Checklist.Clothing" = "Wear form fitted clothing";
+"NewScanCard.Checklist.Space" = "Find a room with ample space";
+"NewScanCard.Checklist.Phone" = "Find an object to hold up phone";
+
+"NewScanCard.Weight" = "Has your weight changed since your last body map?";
+
+"NewScanCard.Button.Title" = "Open Camera";
+
+/* Scan Status */
+"ScanStatus.Title" = "Body Map Status";
+"ScanStatus.NotStarted" = "Scan Not Started";
+"ScanStatus.Started" = "Preparing your scan";
+"ScanStatus.Ready" = "Capture Complete";
+"ScanStatus.Processing" = "Processing";
+"ScanStatus.Failed" = "Failed";
+
+/* Scan List */
+"ScanList.Title" = "Your Body Maps";
+"ScanList.State.Uploading" = "Uploading";
+"ScanList.State.Loading" = "Loading...";
+"ScanList.Uploading.Banner.Message" = "Wait until your last scan has finished uploading before starting a new scan.";
+"ScanList.Measurements.FatLean %@ %@" = "%@ fat, %@ lean";
+"ScanList.ViewFullReport" = "View Full Report";
+
+// FAQ
+"ScanList.FAQ.Title" = "Check out our frequently asked questions";
+"ScanList.FAQ.MapNotReady" = "Why isn’t my map ready to view?";
+"ScanList.FAQ.Processing" = "So what is processing anyway?";
+"ScanList.FAQ.Uploading" = "What happens during uploading?";
+
+/* Scan Details */
+"ScanDetails.Section.Loading" = "Loading scan results...";
+"ScanDetails.Section.KeyStats" = "Key Stats";
+"ScanDetails.Section.UpperTorso" = "Upper Torso";
+"ScanDetails.Section.LowerTorso" = "Lower Torso";
+"ScanDetails.Section.Arms" = "Arms";
+"ScanDetails.Section.Legs" = "Legs";
+"ScanDetails.ModelViewer.ResetButton" = "Reset View";
+
+/* Scan Deletion */
+"ScanDeletion.Button.Title" = "Delete";
+"ScanDeletion.Title" = "Delete Scan";
+"ScanDeletion.Message" = "Are you sure you want to delete this scan? This can not be undone.";

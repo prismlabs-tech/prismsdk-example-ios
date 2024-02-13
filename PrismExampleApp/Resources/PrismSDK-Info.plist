@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string></string>
+	<key>API_URL</key>
+	<string></string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>CLIENT_APP_ID</key>
+	<string>demo.apps.prismlabs.tech</string>
+</dict>
+</plist>
