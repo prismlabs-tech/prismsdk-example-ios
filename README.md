@@ -1,4 +1,4 @@
-# ReferenceApp
+# PrismExampleApp
 
 This Example Project is used to demonstrates how to use [PrismSDK](https://github.com/prismlabs-tech/prismsdk-ios)
 
