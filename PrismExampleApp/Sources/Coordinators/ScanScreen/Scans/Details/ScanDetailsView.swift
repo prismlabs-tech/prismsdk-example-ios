@@ -6,56 +6,31 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import SwiftUI
 import PrismSDK
 import SceneKit
-import SwiftUI
+import Combine
 
 struct ScanDetailsView: View {
     @EnvironmentObject private var apiClient: ApiClient
     @EnvironmentObject private var scanManager: ScanManager
-
-    @EnvironmentObject private var cache: PrismCache
-
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
-    @State private var isLoading: Bool = false
     @State private var details: ScanDetails?
-    @State private var model: URL?
-    @State private var stripes: URL?
     @State private var confirmDelete: Bool = false
-
-    let scan: Scan
-
-    var contentView: some View {
-        VStack {
-            if let url = self.model {
-                ModelViewer(
-                    model: self.sceneFrom(url),
-                    stripes: self.sceneFrom(self.stripes)
-                )
-                .padding()
-                .frame(maxHeight: .infinity)
-            } else {
-                self.loadingModelView
-                    .frame(maxHeight: .infinity)
-            }
-
-            MetricsListSectionView(items: self.details?.items ?? [])
-        }
-        .ignoresSafeArea(.container, edges: .bottom)
-    }
-
-    var loadingModelView: some View {
-        VStack {
-            Spacer()
-            ProgressView()
-            Spacer()
-        }
-    }
+    @State private var showToast: Bool = false
+    
+    var scan: Scan
 
     var body: some View {
-        VStack {
-            self.contentView
+        ZStack {
+            VStack {
+                ModelViewer(scan: self.scan)
+                    .padding()
+                    .frame(maxHeight: .infinity)
+
+                MetricsListSectionView(items: self.details?.items ?? [])
+            }
         }
         .background(Color.prismBase2)
         .navigationBarTitleDisplayMode(.inline)
@@ -64,11 +39,19 @@ struct ScanDetailsView: View {
             ToolbarItem(placement: .primaryAction) {
                 Menu {
                     Button {
+                        UIPasteboard.general.string = self.scan.id
+                        withAnimation {
+                            showToast.toggle()
+                        }
+                    } label: {
+                        Label("ScanDetails.Metadata.ScanID.Text", systemImage: "doc.on.doc.fill")
+                    }
+
+                    Button {
                         self.confirmDelete = true
                     } label: {
                         Label("Delete", systemImage: "trash")
                     }
-                    .foregroundColor(.prismRed)
                 } label: {
                     Label("More", systemImage: "ellipsis")
                 }
@@ -76,7 +59,7 @@ struct ScanDetailsView: View {
             }
         }
         .onAppear {
-            self.fetchScan()
+            self.fetchScanDetails()
         }
         .actionSheet(isPresented: self.$confirmDelete) {
             ActionSheet(
@@ -87,43 +70,17 @@ struct ScanDetailsView: View {
                     .destructive(Text("ScanDeletion.Button.Title")) {
                         self.scanManager.remove(self.scan)
                         self.presentationMode.wrappedValue.dismiss()
-                    },
+                    }
                 ]
             )
         }
     }
-
-    func fetchScan() {
+    
+    private func fetchScanDetails() {
         Task {
-            do {
-                self.isLoading = true
-                let client = ScanClient(client: self.apiClient)
-                self.details = try await client.getDetails(for: self.scan.id)
-                let urls = try await client.assetUrls(forScan: self.scan.id)
-                self.model = try await self.downloadModel(urls.model, type: .model)
-                // This is commented out for now as the PLY is in the wrong format.
-//                self.stripes = try await self.downloadModel(urls.stripes, type: .stripes)
-                try await self.downloadModel(urls.previewImage, type: .preview)
-            } catch {
-                print("Error getting scan details: \(error)")
-            }
+            let client = ScanClient(client: self.apiClient)
+            self.details = try await client.getDetails(for: self.scan.id)
         }
-    }
-
-    @discardableResult
-    func downloadModel(_ url: String?, type: PrismFile.File) async throws -> URL? {
-        if let file = self.cache[self.scan.id, type] {
-            return file
-        }
-        guard let url else { return self.cache[self.scan.id, type] }
-        let tempFile = try await Downloader().download(url)
-        self.cache[self.scan.id, type] = tempFile
-        return self.cache[self.scan.id, type]
-    }
-
-    func sceneFrom(_ url: URL?) -> SCNScene? {
-        guard let url else { return nil }
-        return try? SCNScene(url: url)
     }
 }
 

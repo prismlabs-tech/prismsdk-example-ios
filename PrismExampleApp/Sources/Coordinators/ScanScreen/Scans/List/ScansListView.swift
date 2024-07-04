@@ -11,7 +11,6 @@ import SwiftUI
 import SwipeCell
 
 struct ScansListView: View {
-
     @EnvironmentObject private var apiClient: ApiClient
     @EnvironmentObject private var scanManager: ScanManager
     @EnvironmentObject private var uploader: RecordingUploader
@@ -48,7 +47,12 @@ struct ScansListView: View {
                                         } label: {
                                             Label("Delete", systemImage: "trash")
                                         }
-                                        .foregroundColor(.prismRed)
+
+                                        Button {
+                                            UIPasteboard.general.string = scan.id
+                                        } label: {
+                                            Label("Scan ID", systemImage: "doc.on.doc.fill")
+                                        }
                                     }
                                 }
                                 .swipeCell(
@@ -80,7 +84,7 @@ struct ScansListView: View {
                                                     self.confirmDelete = true
                                                 },
                                                 feedback: true
-                                            ),
+                                            )
                                         ],
                                         slotStyle: .normal,
                                         buttonWidth: 60
@@ -114,7 +118,7 @@ struct ScansListView: View {
                     .destructive(Text("ScanDeletion.Button.Title")) {
                         guard let scan = self.scanToDelete else { return }
                         self.scanManager.remove(scan)
-                    },
+                    }
                 ]
             )
         }
@@ -205,5 +209,6 @@ struct ScansListView_Previews: PreviewProvider {
         .environmentObject(ApiClient.preview)
         .environmentObject(ScanManager.preview)
         .environmentObject(RecordingUploader.preview)
+        .environmentObject(PrismCache())
     }
 }

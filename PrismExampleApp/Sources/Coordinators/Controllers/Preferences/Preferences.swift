@@ -1,16 +1,16 @@
-/*
- * Copyright (c) Prismlabs, Inc. and affiliates.
- * All rights reserved.
- *
- * This source code is licensed under the license found in the
- * LICENSE file in the root directory of this source tree.
- */
+//
+//  Copyright (c) Prismlabs, Inc. and affiliates.
+//  All rights reserved.
+//
+//  This source code is licensed under the license found in the
+//  LICENSE file in the root directory of this source tree.
+//
 
 import Combine
 import Foundation
 import PrismSDK
 
-enum PreferenceKey: String {
+enum CacheKeys: String {
     case userEmail
     case userSex
     case userHeight
@@ -21,6 +21,9 @@ enum PreferenceKey: String {
     case agreeedToSharingData
     case lastScanId
     case hasScanned
+    case assetConfigId
+    case bodyfatMethod
+    case onboardingTutorialCompleted
 }
 
 final class Preferences {
@@ -39,6 +42,8 @@ final class Preferences {
         preferences.agreedToSharingData = true
         preferences.lastScanId = ""
         preferences.hasScanned = false
+        preferences.assetConfigId = .objTextureBased
+        preferences.bodyfatMethod = .coco
     }
 
     /// Sends through the changed key path whenever a change occurs.
@@ -48,25 +53,31 @@ final class Preferences {
         self.userDefaults = userDefaults
     }
 
-    @UserDefault(PreferenceKey.userEmail.rawValue) var userEmail: String = ""
+    @UserDefault(CacheKeys.userEmail.rawValue) var userEmail: String = ""
 
-    @UserDefault(wrappedValue: nil, PreferenceKey.userSex.rawValue) var userSex: Sex?
+    @UserDefault(wrappedValue: nil, CacheKeys.userSex.rawValue) var userSex: Sex?
 
-    @UserDefault(PreferenceKey.userHeight.rawValue) var userHeight: Int = 69
+    @UserDefault(CacheKeys.userHeight.rawValue) var userHeight: Int = 69
 
-    @UserDefault(PreferenceKey.userWeight.rawValue) var userWeight: Int = 167
+    @UserDefault(CacheKeys.userWeight.rawValue) var userWeight: Int = 167
 
-    @UserDefault(PreferenceKey.userAge.rawValue) var userAge: Int = 42
+    @UserDefault(CacheKeys.userAge.rawValue) var userAge: Int = 42
 
-    @UserDefault(PreferenceKey.profileSet.rawValue) var onboardingComplete: Bool = false
+    @UserDefault(CacheKeys.profileSet.rawValue) var onboardingComplete: Bool = false
 
-    @UserDefault(PreferenceKey.agreeedToTerms.rawValue) var agreedToTerms: Bool = false
+    @UserDefault(CacheKeys.agreeedToTerms.rawValue) var agreedToTerms: Bool = false
 
-    @UserDefault(PreferenceKey.agreeedToSharingData.rawValue) var agreedToSharingData: Bool = true
+    @UserDefault(CacheKeys.agreeedToSharingData.rawValue) var agreedToSharingData: Bool = true
 
-    @UserDefault(PreferenceKey.lastScanId.rawValue) var lastScanId: String = ""
+    @UserDefault(CacheKeys.lastScanId.rawValue) var lastScanId: String = ""
 
-    @UserDefault(PreferenceKey.hasScanned.rawValue) var hasScanned: Bool = false
+    @UserDefault(CacheKeys.hasScanned.rawValue) var hasScanned: Bool = false
+
+    @UserDefault(CacheKeys.assetConfigId.rawValue) var assetConfigId: AssetConfigId = .objTextureBased
+
+    @UserDefault(CacheKeys.onboardingTutorialCompleted.rawValue) var onboardingTutorialCompleted: Bool = false
+    
+    @UserDefault(CacheKeys.bodyfatMethod.rawValue) var bodyfatMethod: BodyfatMethod = .coco
 }
 
 @propertyWrapper
@@ -104,6 +115,12 @@ struct UserDefault<Value> {
                 if let sorting = Sorting(rawValue: stringValue) {
                     return sorting as? Value ?? defaultValue
                 }
+                if let assetConfigId = AssetConfigId(rawValue: stringValue) {
+                    return assetConfigId as? Value ?? defaultValue
+                }
+                if let bodyfatMethod = BodyfatMethod(rawValue: stringValue) {
+                     return bodyfatMethod as? Value ?? defaultValue
+                 }
             }
             return container.object(forKey: key) as? Value ?? defaultValue
         }

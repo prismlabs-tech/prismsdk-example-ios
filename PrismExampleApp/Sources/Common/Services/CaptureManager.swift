@@ -16,6 +16,8 @@ class CaptureManager: ObservableObject {
     }()
 
     @Preference(\.agreedToSharingData) private var agreedToSharingData: Bool
+    @Preference(\.assetConfigId) private var assetConfigId: AssetConfigId
+    @Preference(\.bodyfatMethod) private var bodyfatMethod: BodyfatMethod
     @Preference(\.hasScanned) private var hasScanned: Bool
     @Preference(\.lastScanId) private var lastScanId: String
     @Preference(\.userEmail) private var userEmail: String
@@ -40,7 +42,14 @@ class CaptureManager: ObservableObject {
                 )
             )
         let client = ScanClient(client: self.apiClient)
-        let result = try await client.createScan(NewScan(deviceConfigName: "IPHONE_SCANNER", userToken: self.userEmail.lowercased()))
+        let result = try await client.createScan(
+            NewScan(
+                deviceConfigName: "IPHONE_SCANNER",
+                userToken: self.userEmail.lowercased(),
+                bodyfatMethod: self.bodyfatMethod,
+                assetConfigId: self.assetConfigId
+            )
+        )
         self.lastScanId = result.id
         self.hasScanned = true
 

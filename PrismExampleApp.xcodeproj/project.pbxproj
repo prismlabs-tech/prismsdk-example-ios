@@ -96,6 +96,9 @@
 		152032C92B2743FC00B39FC8 /* PrismSDK-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 152032C82B2743FC00B39FC8 /* PrismSDK-Info.plist */; };
 		152032D02B27537900B39FC8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 152032CF2B27537900B39FC8 /* Localizable.strings */; };
 		156F7D402B7BCD4900961D29 /* PrismSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 156F7D3F2B7BCD4900961D29 /* PrismSDK */; };
+		3D5736542C369AFB00654ED1 /* BodyfatMethod+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736522C369AFB00654ED1 /* BodyfatMethod+Localization.swift */; };
+		3D5736552C369AFB00654ED1 /* AssetsConfigId+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736532C369AFB00654ED1 /* AssetsConfigId+Localization.swift */; };
+		3D5736592C369B4A00654ED1 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736582C369B4A00654ED1 /* InfoButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,6 +189,9 @@
 		152032AC2B27307B00B39FC8 /* apple.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = apple.ply; sourceTree = "<group>"; };
 		152032C82B2743FC00B39FC8 /* PrismSDK-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PrismSDK-Info.plist"; sourceTree = "<group>"; };
 		152032CF2B27537900B39FC8 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		3D5736522C369AFB00654ED1 /* BodyfatMethod+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BodyfatMethod+Localization.swift"; sourceTree = "<group>"; };
+		3D5736532C369AFB00654ED1 /* AssetsConfigId+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AssetsConfigId+Localization.swift"; sourceTree = "<group>"; };
+		3D5736582C369B4A00654ED1 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -425,6 +431,7 @@
 		152032072B27227600B39FC8 /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
+				3D5736582C369B4A00654ED1 /* InfoButton.swift */,
 				152032082B27227600B39FC8 /* Weight */,
 				1520320C2B27227600B39FC8 /* ProfileView.swift */,
 				1520320D2B27227600B39FC8 /* Sex */,
@@ -519,6 +526,8 @@
 		152032212B27227600B39FC8 /* PrismLink */ = {
 			isa = PBXGroup;
 			children = (
+				3D5736532C369AFB00654ED1 /* AssetsConfigId+Localization.swift */,
+				3D5736522C369AFB00654ED1 /* BodyfatMethod+Localization.swift */,
 				152032222B27227600B39FC8 /* GroupedScans.swift */,
 				152032232B27227600B39FC8 /* ApiClient+Helpers.swift */,
 				152032242B27227600B39FC8 /* ScanClient+Details.swift */,
@@ -679,6 +688,7 @@
 				1520327D2B27227600B39FC8 /* Date+Helpers.swift in Sources */,
 				152032712B27227600B39FC8 /* ProfileAgeSection.swift in Sources */,
 				152032812B27227600B39FC8 /* View+Modifiers.swift in Sources */,
+				3D5736542C369AFB00654ED1 /* BodyfatMethod+Localization.swift in Sources */,
 				1520326C2B27227600B39FC8 /* HeightPicker.swift in Sources */,
 				152032522B27227600B39FC8 /* ScanListItemContent.swift in Sources */,
 				1520326A2B27227600B39FC8 /* ProfileSexSection.swift in Sources */,
@@ -690,6 +700,7 @@
 				1520327F2B27227600B39FC8 /* Array+KeyPath.swift in Sources */,
 				152032602B27227600B39FC8 /* Checkmark.swift in Sources */,
 				152032622B27227600B39FC8 /* ScanStatusView.swift in Sources */,
+				3D5736592C369B4A00654ED1 /* InfoButton.swift in Sources */,
 				1520324F2B27227600B39FC8 /* PrismSceneView.swift in Sources */,
 				1520326D2B27227600B39FC8 /* ProfileHeightSection.swift in Sources */,
 				1520323B2B27227600B39FC8 /* Sorting.swift in Sources */,
@@ -716,6 +727,7 @@
 				152032512B27227600B39FC8 /* ScanListItemProcessing.swift in Sources */,
 				1520323D2B27227600B39FC8 /* Downloader.swift in Sources */,
 				152032372B27227600B39FC8 /* Preferences+Environment.swift in Sources */,
+				3D5736552C369AFB00654ED1 /* AssetsConfigId+Localization.swift in Sources */,
 				152032612B27227600B39FC8 /* NavigationTitle.swift in Sources */,
 				152032592B27227600B39FC8 /* CollectionView.swift in Sources */,
 				152032772B27227600B39FC8 /* GroupedScans.swift in Sources */,
