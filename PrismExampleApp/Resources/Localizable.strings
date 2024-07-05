@@ -144,3 +144,14 @@
 "ScanDeletion.Button.Title" = "Delete";
 "ScanDeletion.Title" = "Delete Scan";
 "ScanDeletion.Message" = "Are you sure you want to delete this scan? This can not be undone.";
+
+/* Scan Assets Bundle ID */
+"ScanAssetsBundleID.SinglePly" = "Vertex-based coloring (Legacy)";
+"ScanAssetsBundleID.ObjTextureBased" = "Texture-based coloring";
+
+/* Bodyfat Methods */
+"BodyfatMethod.Adam" = "Automatic Athlete Mode";
+"BodyfatMethod.Army" = "US Army";
+"BodyfatMethod.Coco" = "Regular Mode";
+"BodyfatMethod.ExtendedNavyThinboost" = "Athlete Mode";
+"BodyfatMethod.TinaFit" = "Regular Mode (Legacy)";

@@ -22,7 +22,7 @@ class PrismCache: ObservableObject {
     var expirationDate: Date {
         var components = DateComponents()
         components.day = -14
-        return Calendar.current.date(byAdding: components, to: Date())!
+        return Calendar.current.date(byAdding: components, to: Date()) ?? .distantPast
     }
 
     init() {
@@ -70,41 +70,40 @@ class PrismCache: ObservableObject {
 
     func clear() {
         guard let cacheDirectory = self.cacheDirectory else { return }
-        try? self.cache.forEach { try FileManager.default.removeItem(at: cacheDirectory.appendingPathComponent($0.id)) }
+        try? self.cache.forEach({ try FileManager.default.removeItem(at: cacheDirectory.appendingPathComponent($0.id)) })
     }
 
     func validateCache() {
         for object in self.cache {
             guard let cacheDirectory = self.cacheDirectory else { continue }
             let objectDirectory = cacheDirectory.appendingPathComponent(object.id)
-            guard
-                let contents = try? self.fileManager.contentsOfDirectory(
-                    at: objectDirectory,
-                    includingPropertiesForKeys: [.creationDateKey],
-                    options: .skipsHiddenFiles
-                ) else { continue }
+            guard let contents = try? self.fileManager.contentsOfDirectory(
+                at: objectDirectory,
+                includingPropertiesForKeys: [.creationDateKey],
+                options: .skipsHiddenFiles
+            ) else { continue }
             contents.forEach { url in
                 do {
                     let resourceValues = try url.resourceValues(forKeys: [.creationDateKey])
                     guard let date = resourceValues.creationDate else { return }
                     guard date < self.expirationDate else { return }
                     try FileManager.default.removeItem(at: url)
-                } catch {}
+                } catch { }
             }
         }
     }
 
     private func parseCache(at directory: URL) throws -> [PrismObject] {
         let contents = try self.fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-        return try contents.map { folder in
+        return try contents.map({ folder in
             let contents = try self.fileManager.contentsOfDirectory(at: folder, includingPropertiesForKeys: [.creationDateKey], options: .skipsHiddenFiles)
             // For now we are only caring about 2 types, a model and an image,
             // but this can be extended to support more in the future
             return PrismObject(
                 id: folder.lastPathComponent,
-                files: contents.map { PrismFile(name: $0.lastPathComponent) }
+                files: contents.map({ PrismFile(name: $0.lastPathComponent) })
             )
-        }
+        })
     }
 
     private func moveFile(_ url: URL, in id: String, type: PrismFile.File) -> URL? {
@@ -118,17 +117,11 @@ class PrismCache: ObservableObject {
         return newPath
     }
 }
-
 // id is the folder name, and files are the files inside
 // PrismObject(id: "uuid", files: [PrismFile(name: "model.ply")])
 struct PrismObject: Identifiable, Codable {
     let id: String
     var files: [PrismFile]
-
-    init(id: String, files: [PrismFile]) {
-        self.id = id
-        self.files = files
-    }
 
     mutating func add(_ file: PrismFile) {
         self.files.append(file)
@@ -139,14 +132,24 @@ struct PrismObject: Identifiable, Codable {
     }
 }
 
-// PrismFile(name: "model.ply")
-// PrismFile(name: "stripes.ply")
+// PrismFile(name: "model.ply") or PrismFile(name: "model.obj")
+// [PrismFile(name: "stripes_one.ply"), PrismFile(name: "stripes_two.ply") ...]
 // PrismFile(name: "preview.png")
+// PrismFile(name: "texture.png")
+// PrismFile(name: "avatar.obj.mtl")
 struct PrismFile: Identifiable, Codable {
     enum File: String, Codable {
         case preview
         case model
         case stripes
+        case texture
+        
+        // obj file references a avatar.obj.mtl, that name reference is set
+        //  in the backend when the obj is created. Because of that the base
+        //  name of the mtl must be avatar.obj and as a result the mtl file
+        //  full name will be avatar.obj.mtl
+        case material = "avatar.obj"
+
     }
 
     let file: File
@@ -159,6 +162,10 @@ struct PrismFile: Identifiable, Codable {
             self.file = .stripes
         } else if name.contains("model") {
             self.file = .model
+        } else if name.contains("texture") {
+            self.file = .texture
+        } else if name.contains("avatar.obj") {
+            self.file = .material
         } else {
             self.file = .preview
         }

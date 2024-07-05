@@ -26,15 +26,20 @@ struct ScanListItemContent: View {
         let formatter = ScanItemType.weight.format(self.scan.weight.value)
         return "\(formatter.measurement) \(formatter.unit)"
     }
+    
+    var bodyFatMethod: LocalizedStringKey {
+        guard let value = self.scan.bodyfat?.bodyfatMethod else { return "--"}
+        return BodyfatMethod(rawValue: value)?.name ?? "--"
+    }
 
     var bodyFatPercentage: String {
-        guard let value = self.scan.bodyfat?.bodyfatPercentage else { return "--%" }
+        guard let value = self.scan.bodyfat?.bodyfatPercentage else { return "--%"}
         let formatter = ScanItemType.fatMassPercentage.format(value)
         return "\(formatter.measurement)\(formatter.unit)"
     }
 
     var leanPercentage: String {
-        guard let value = self.scan.bodyfat?.leanMassPercentage else { return "--%" }
+        guard let value = self.scan.bodyfat?.leanMassPercentage else { return "--%"}
         let formatter = ScanItemType.leanMassPercentage.format(value)
         return "\(formatter.measurement)\(formatter.unit)"
     }
@@ -63,6 +68,9 @@ struct ScanListItemContent: View {
                         .font(.body)
                         .foregroundColor(.prismBase50)
                     Text("ScanList.Measurements.FatLean \(self.bodyFatPercentage) \(self.leanPercentage)")
+                        .font(.body)
+                        .foregroundColor(.prismBase50)
+                    Text(self.bodyFatMethod)
                         .font(.body)
                         .foregroundColor(.prismBase50)
                 }
