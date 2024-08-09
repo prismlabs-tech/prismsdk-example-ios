@@ -99,6 +99,9 @@
 		3D5736542C369AFB00654ED1 /* BodyfatMethod+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736522C369AFB00654ED1 /* BodyfatMethod+Localization.swift */; };
 		3D5736552C369AFB00654ED1 /* AssetsConfigId+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736532C369AFB00654ED1 /* AssetsConfigId+Localization.swift */; };
 		3D5736592C369B4A00654ED1 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736582C369B4A00654ED1 /* InfoButton.swift */; };
+		3DA3D3692C66116D0045016D /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D3682C66116D0045016D /* HealthKitManager.swift */; };
+		3DA3D36C2C6611760045016D /* Height+HealthKitUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D36A2C6611760045016D /* Height+HealthKitUnits.swift */; };
+		3DA3D36D2C6611760045016D /* Weight+HealthKitUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D36B2C6611760045016D /* Weight+HealthKitUnits.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -192,6 +195,10 @@
 		3D5736522C369AFB00654ED1 /* BodyfatMethod+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BodyfatMethod+Localization.swift"; sourceTree = "<group>"; };
 		3D5736532C369AFB00654ED1 /* AssetsConfigId+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AssetsConfigId+Localization.swift"; sourceTree = "<group>"; };
 		3D5736582C369B4A00654ED1 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
+		3DA3D3672C6609540045016D /* PrismExampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrismExampleApp.entitlements; sourceTree = "<group>"; };
+		3DA3D3682C66116D0045016D /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		3DA3D36A2C6611760045016D /* Height+HealthKitUnits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Height+HealthKitUnits.swift"; sourceTree = "<group>"; };
+		3DA3D36B2C6611760045016D /* Weight+HealthKitUnits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Weight+HealthKitUnits.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +283,7 @@
 		152031CC2B27227600B39FC8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3DA3D3682C66116D0045016D /* HealthKitManager.swift */,
 				152031CE2B27227600B39FC8 /* Downloader.swift */,
 				152031CF2B27227600B39FC8 /* ScanManager.swift */,
 				152031D02B27227600B39FC8 /* RecordingUploader.swift */,
@@ -511,6 +519,8 @@
 		152032202B27227600B39FC8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3DA3D36A2C6611760045016D /* Height+HealthKitUnits.swift */,
+				3DA3D36B2C6611760045016D /* Weight+HealthKitUnits.swift */,
 				1520322B2B27227600B39FC8 /* Popover */,
 				152032212B27227600B39FC8 /* PrismLink */,
 				152032282B27227600B39FC8 /* Date+Helpers.swift */,
@@ -560,6 +570,7 @@
 		152032912B2722A000B39FC8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3DA3D3672C6609540045016D /* PrismExampleApp.entitlements */,
 				152032CF2B27537900B39FC8 /* Localizable.strings */,
 				152032C82B2743FC00B39FC8 /* PrismSDK-Info.plist */,
 				152032AA2B27307B00B39FC8 /* Preview Content */,
@@ -695,8 +706,10 @@
 				152032682B27227600B39FC8 /* ProfileWeightSection.swift in Sources */,
 				152032442B27227600B39FC8 /* NewScanView.swift in Sources */,
 				1520327A2B27227600B39FC8 /* Scan+Groups.swift in Sources */,
+				3DA3D36C2C6611760045016D /* Height+HealthKitUnits.swift in Sources */,
 				1520324B2B27227600B39FC8 /* ScanDetailsGridView.swift in Sources */,
 				1520325C2B27227600B39FC8 /* LearnMoreButton.swift in Sources */,
+				3DA3D36D2C6611760045016D /* Weight+HealthKitUnits.swift in Sources */,
 				1520327F2B27227600B39FC8 /* Array+KeyPath.swift in Sources */,
 				152032602B27227600B39FC8 /* Checkmark.swift in Sources */,
 				152032622B27227600B39FC8 /* ScanStatusView.swift in Sources */,
@@ -710,6 +723,7 @@
 				152032742B27227600B39FC8 /* ProfileSex.swift in Sources */,
 				1520325B2B27227600B39FC8 /* HostedCollectionViewCell.swift in Sources */,
 				152032562B27227600B39FC8 /* HowToView.swift in Sources */,
+				3DA3D3692C66116D0045016D /* HealthKitManager.swift in Sources */,
 				152032702B27227600B39FC8 /* AgePicker.swift in Sources */,
 				152032492B27227600B39FC8 /* ScanItemView.swift in Sources */,
 				1520326B2B27227600B39FC8 /* ProfileSexPicker.swift in Sources */,
@@ -898,6 +912,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = PrismExampleApp/Resources/PrismExampleApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PrismExampleApp/Resources/Preview Content\"";
@@ -908,6 +924,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = PrismSDKExample;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSCameraUsageDescription = "PrismExampleApp wants access to the camera to scan your body";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "To read the health data and show it in the application.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To save the health data for later usage.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -921,8 +939,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "tech.prismlabs.prism-example-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.prismlabs.prism-sdk-example-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -938,6 +957,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = PrismExampleApp/Resources/PrismExampleApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PrismExampleApp/Resources/Preview Content\"";
@@ -948,6 +969,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = PrismSDKExample;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSCameraUsageDescription = "PrismExampleApp wants access to the camera to scan your body";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "To read the health data and show it in the application.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To save the health data for later usage.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -961,8 +984,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "tech.prismlabs.prism-example-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.prismlabs.prism-sdk-example-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

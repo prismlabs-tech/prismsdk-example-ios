@@ -16,6 +16,8 @@ struct ScanDetailsView: View {
     @EnvironmentObject private var scanManager: ScanManager
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
+    @StateObject var healthStore: HealthKitManager = HealthKitManager.shared
+    
     @State private var details: ScanDetails?
     @State private var confirmDelete: Bool = false
     @State private var showToast: Bool = false
@@ -45,6 +47,12 @@ struct ScanDetailsView: View {
                         }
                     } label: {
                         Label("ScanDetails.Metadata.ScanID.Text", systemImage: "doc.on.doc.fill")
+                    }
+                    
+                    Button {
+                        self.healthStore.write(PrismQuantityData(self.scan))
+                    } label: {
+                        Label("Save Health Data", systemImage: "heart.fill")
                     }
 
                     Button {
