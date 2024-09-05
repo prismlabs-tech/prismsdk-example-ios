@@ -92,13 +92,13 @@
 		152032AD2B27307B00B39FC8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 152032AB2B27307B00B39FC8 /* Preview Assets.xcassets */; };
 		152032AE2B27307B00B39FC8 /* apple.ply in Resources */ = {isa = PBXBuildFile; fileRef = 152032AC2B27307B00B39FC8 /* apple.ply */; };
 		152032BA2B2731F100B39FC8 /* SwipeCell in Frameworks */ = {isa = PBXBuildFile; productRef = 152032B92B2731F100B39FC8 /* SwipeCell */; };
-		152032C32B273A4400B39FC8 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 152032C22B273A4400B39FC8 /* BetterSafariView */; };
 		152032C92B2743FC00B39FC8 /* PrismSDK-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 152032C82B2743FC00B39FC8 /* PrismSDK-Info.plist */; };
 		152032D02B27537900B39FC8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 152032CF2B27537900B39FC8 /* Localizable.strings */; };
 		156F7D402B7BCD4900961D29 /* PrismSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 156F7D3F2B7BCD4900961D29 /* PrismSDK */; };
 		3D5736542C369AFB00654ED1 /* BodyfatMethod+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736522C369AFB00654ED1 /* BodyfatMethod+Localization.swift */; };
 		3D5736552C369AFB00654ED1 /* AssetsConfigId+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736532C369AFB00654ED1 /* AssetsConfigId+Localization.swift */; };
 		3D5736592C369B4A00654ED1 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736582C369B4A00654ED1 /* InfoButton.swift */; };
+		3D85024D2C89A7F7003A5298 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 3D85024C2C89A7F7003A5298 /* BetterSafariView */; };
 		3DA3D3692C66116D0045016D /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D3682C66116D0045016D /* HealthKitManager.swift */; };
 		3DA3D36C2C6611760045016D /* Height+HealthKitUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D36A2C6611760045016D /* Height+HealthKitUnits.swift */; };
 		3DA3D36D2C6611760045016D /* Weight+HealthKitUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D36B2C6611760045016D /* Weight+HealthKitUnits.swift */; };
@@ -207,8 +207,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				156F7D402B7BCD4900961D29 /* PrismSDK in Frameworks */,
+				3D85024D2C89A7F7003A5298 /* BetterSafariView in Frameworks */,
 				152032BA2B2731F100B39FC8 /* SwipeCell in Frameworks */,
-				152032C32B273A4400B39FC8 /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,8 +629,8 @@
 			name = PrismExampleApp;
 			packageProductDependencies = (
 				152032B92B2731F100B39FC8 /* SwipeCell */,
-				152032C22B273A4400B39FC8 /* BetterSafariView */,
 				156F7D3F2B7BCD4900961D29 /* PrismSDK */,
+				3D85024C2C89A7F7003A5298 /* BetterSafariView */,
 			);
 			productName = PrismReference;
 			productReference = 152031B12B27224C00B39FC8 /* PrismExampleApp.app */;
@@ -662,8 +662,8 @@
 			mainGroup = 152031A82B27224C00B39FC8;
 			packageReferences = (
 				152032B82B2731F100B39FC8 /* XCRemoteSwiftPackageReference "SwipeCell" */,
-				152032C12B273A4400B39FC8 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
 				156F7D3E2B7BCD4900961D29 /* XCRemoteSwiftPackageReference "prismsdk-ios" */,
+				3D85024B2C89A7F7003A5298 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
 			);
 			productRefGroup = 152031B22B27224C00B39FC8 /* Products */;
 			projectDirPath = "";
@@ -1028,20 +1028,20 @@
 				version = 0.9.5;
 			};
 		};
-		152032C12B273A4400B39FC8 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:stleamist/BetterSafariView.git";
-			requirement = {
-				kind = exactVersion;
-				version = 2.4.2;
-			};
-		};
 		156F7D3E2B7BCD4900961D29 /* XCRemoteSwiftPackageReference "prismsdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/prismlabs-tech/prismsdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.1;
+			};
+		};
+		3D85024B2C89A7F7003A5298 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
+			requirement = {
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1052,15 +1052,15 @@
 			package = 152032B82B2731F100B39FC8 /* XCRemoteSwiftPackageReference "SwipeCell" */;
 			productName = SwipeCell;
 		};
-		152032C22B273A4400B39FC8 /* BetterSafariView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 152032C12B273A4400B39FC8 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
-			productName = BetterSafariView;
-		};
 		156F7D3F2B7BCD4900961D29 /* PrismSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 156F7D3E2B7BCD4900961D29 /* XCRemoteSwiftPackageReference "prismsdk-ios" */;
 			productName = PrismSDK;
+		};
+		3D85024C2C89A7F7003A5298 /* BetterSafariView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D85024B2C89A7F7003A5298 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			productName = BetterSafariView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -23,7 +23,7 @@ struct Checkbox: View {
                     Image.checkboxChecked
                         .foregroundColor(self.isEnabled ? .prismBlack : .prismBase50)
                 } else {
-                    Image.checboxUnchecked
+                    Image.checkboxUnchecked
                         .foregroundColor(self.isEnabled ? .prismBlack : .prismBase50)
                 }
             }
