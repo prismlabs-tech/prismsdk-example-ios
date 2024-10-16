@@ -74,6 +74,10 @@ struct PrismSceneView: UIViewRepresentable {
             self.view.allowsCameraControl = true
             self.view.autoenablesDefaultLighting = true
             self.view.scene = self.scene
+            
+            // Fix model plane clipping
+            self.camera.zNear = 0.1
+            self.camera.zFar = 1000
 
             self.camera.name = "Camera"
             self.cameraNode.camera = self.camera
