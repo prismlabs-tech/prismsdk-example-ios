@@ -49,7 +49,7 @@ struct PrismSceneView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        context.coordinator.set(camera: self.camera)
+        context.coordinator.set(camera: self.camera, animated: false)
     }
 
     func makeCoordinator() -> Coordinator {
@@ -134,25 +134,26 @@ struct PrismSceneView: UIViewRepresentable {
             node.rotation = SCNVector4(x: 0, y: 0, z: 1, w: .pi / 2)
         }
 
-        func set(camera: Camera?) {
+        func set(camera: Camera?, animated: Bool) {
             guard let camera else { return }
-            // I HATE leaving commented code lying around but since we are still trying to figure out all this animation stuff
-            // I wanted to leave a direct reminder of what was (mostly) working before so that there's an easy reference
-            // We can remove it once a better solution is in place
-//            SCNTransaction.begin()
-//            SCNTransaction.animationDuration = 1
-//            self.view.pointOfView?.position = camera.position
-//            self.view.pointOfView?.rotation = camera.rotation
-//            self.view.pointOfView?.orientation = camera.orientation
-//            self.view.pointOfView?.camera?.fieldOfView = camera.fieldOfView
-//            SCNTransaction.commit()
-            let action = SCNAction.customAction(duration: 1, action: { _, _ in
-                self.view.pointOfView?.position = camera.position
-                self.view.pointOfView?.rotation = camera.rotation
-                self.view.pointOfView?.orientation = camera.orientation
-                self.view.pointOfView?.camera?.fieldOfView = camera.fieldOfView
-            })
-            self.view.scene?.rootNode.runAction(action)
+            // Stop inertia
+            view.defaultCameraController.stopInertia()
+
+            // Disable camera control temporarily
+            view.allowsCameraControl = false
+
+            // Animate camera transition
+            SCNTransaction.begin()
+            SCNTransaction.animationDuration = animated ? 1.0 : 0.0
+            SCNTransaction.completionBlock = {
+                // Re-enable camera control
+                self.view.allowsCameraControl = true
+            }
+            view.pointOfView?.position = camera.position
+            view.pointOfView?.rotation = camera.rotation
+            view.pointOfView?.orientation = camera.orientation
+            view.pointOfView?.camera?.fieldOfView = camera.fieldOfView
+            SCNTransaction.commit()
         }
 
         func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
