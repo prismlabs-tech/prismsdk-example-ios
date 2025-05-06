@@ -6,8 +6,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
+import UIKit
 
 extension PrismCache {
     func image(for scanId: String) -> Image? {

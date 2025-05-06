@@ -1,17 +1,16 @@
-/*
- * Copyright (c) Prismlabs, Inc. and affiliates.
- * All rights reserved.
- *
- * This source code is licensed under the license found in the
- * LICENSE file in the root directory of this source tree.
- */
+//
+//  Copyright (c) Prismlabs, Inc. and affiliates.
+//  All rights reserved.
+//
+//  This source code is licensed under the license found in the
+//  LICENSE file in the root directory of this source tree.
+//
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 struct OnboardingProfileView: View {
     @EnvironmentObject private var apiClient: ApiClient
-
     @Preference(\.userEmail) private var userEmail: String
     @Preference(\.userSex) private var userSex: Sex?
     @Preference(\.userHeight) private var userHeight: Int
@@ -88,9 +87,9 @@ struct OnboardingProfileView: View {
     }
 }
 
-struct OnboardingProfileView_Previews: PreviewProvider {
+ struct OnboardingProfileView_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingProfileView(isPresented: .constant(true))
             .environmentObject(ApiClient.preview)
     }
-}
+ }

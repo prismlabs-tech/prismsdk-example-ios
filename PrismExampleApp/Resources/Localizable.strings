@@ -1,10 +1,10 @@
-/*
- * Copyright (c) Prismlabs, Inc. and affiliates.
- * All rights reserved.
- *
- * This source code is licensed under the license found in the
- * LICENSE file in the root directory of this source tree.
- */
+/* 
+  Localizable.strings
+  PrismReference
+
+  Created by Anthony Castelli on 2/8/23.
+  
+*/
 
 /* Generic */
 "Button.Continue" = "Continue";
@@ -39,6 +39,12 @@
 "BodyScanType.leftBicep" = "Left Bicep";
 "BodyScanType.rightBicep" = "Right Bicep";
 
+"BodyScanType.leftForearm" = "Left Forearm";
+"BodyScanType.rightForearm" = "Right Forearm";
+"BodyScanType.leftWrist" = "Left Wrist";
+"BodyScanType.rightWrist" = "Right Wrist";
+
+
 "BodyScanType.leftUpperThigh" = "Left Upper Thigh";
 "BodyScanType.rightUpperThigh" = "Right Upper Thigh";
 "BodyScanType.leftLowerThigh" = "Left Lower Thigh";
@@ -66,15 +72,12 @@
 "Profile.LogoutInformation" = "Logging out will clear all of the app cache and reset the app into the onboarding state.";
 "Profile.DoneButton.Title" = "Done";
 "Profile.NavigationBar.Title" = "Profile";
+"Profile.Form.AvatarEnabled" = "3D Avatar";
 
 /* Terms and Conditions */
-"Terms.Title" = "We take your privacy and security seriously";
-"Terms.Subtitle" = "Short description of the Fitness Users Privacy Terms.";
-
-"Terms.Button.Title" = "Privacy Policy and Terms & Conditions";
-
-"Terms.Checkbox.Title" = "I agree to Privacy Policy & Terms and Conditions.";
-"Terms.DataSharing.Checkbox.Title" = "I agree to sharing my data with Prism Labs Inc. for the sole purpose of improving its products and services.";
+"Terms.Consent.Title" = "A note about your privacy and our terms of use";
+"Terms.Consent.Note" = "When you do a body scan, we send your images and data (including gender, height & weight, but not name or contact info) to Prism Labs to make a 3D model of your entire body, including basic face geometry. Prism Labs then generates body metrics and insights like body composition, which are shared back with us to display your body metrics. The data in aggregate is also used to improve the technology.";
+"Terms.Consent.Checkbox" = "I consent to the collection, use, disclosure, and storage of my images, bodymaps and data as described in more detail in %@.";
 
 /* How To */
 "HowTo.Title" = "How Body Mapping Works";
@@ -134,11 +137,14 @@
 /* Scan Details */
 "ScanDetails.Section.Loading" = "Loading scan results...";
 "ScanDetails.Section.KeyStats" = "Key Stats";
+"ScanDetails.Section.Circumference" = "Circumference";
 "ScanDetails.Section.UpperTorso" = "Upper Torso";
 "ScanDetails.Section.LowerTorso" = "Lower Torso";
 "ScanDetails.Section.Arms" = "Arms";
 "ScanDetails.Section.Legs" = "Legs";
 "ScanDetails.ModelViewer.ResetButton" = "Reset View";
+"ScanDetails.Metadata.Alert.Title" = "Scan id copied successfully";
+"ScanDetails.Metadata.ScanID.Text" = "Scan id";
 
 /* Scan Deletion */
 "ScanDeletion.Button.Title" = "Delete";
@@ -152,6 +158,9 @@
 /* Bodyfat Methods */
 "BodyfatMethod.Adam" = "Automatic Athlete Mode";
 "BodyfatMethod.Army" = "US Army";
+"BodyfatMethod.ArmyAthlete" = "Athlete Mode";
+"BodyfatMethod.CocoBri" = "Regular Mode Coco (Bri)";
 "BodyfatMethod.Coco" = "Regular Mode";
-"BodyfatMethod.ExtendedNavyThinboost" = "Athlete Mode";
-"BodyfatMethod.TinaFit" = "Regular Mode (Legacy)";
+"BodyfatMethod.CocoLegacy" = "Regular Mode Coco (Legacy)";
+"BodyfatMethod.ExtendedNavyThinboost" = "Athlete Mode (Legacy)";
+"BodyfatMethod.TinaFit" = "Regular Mode TinaFit (Legacy)";

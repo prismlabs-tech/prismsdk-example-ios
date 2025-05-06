@@ -43,7 +43,8 @@ final class Preferences {
         preferences.lastScanId = ""
         preferences.hasScanned = false
         preferences.assetConfigId = .objTextureBased
-        preferences.bodyfatMethod = .coco
+        preferences.bodyfatMethod = .coco_bri
+        preferences.onboardingTutorialCompleted = false
     }
 
     /// Sends through the changed key path whenever a change occurs.
@@ -72,12 +73,12 @@ final class Preferences {
     @UserDefault(CacheKeys.lastScanId.rawValue) var lastScanId: String = ""
 
     @UserDefault(CacheKeys.hasScanned.rawValue) var hasScanned: Bool = false
-
+    
     @UserDefault(CacheKeys.assetConfigId.rawValue) var assetConfigId: AssetConfigId = .objTextureBased
 
     @UserDefault(CacheKeys.onboardingTutorialCompleted.rawValue) var onboardingTutorialCompleted: Bool = false
     
-    @UserDefault(CacheKeys.bodyfatMethod.rawValue) var bodyfatMethod: BodyfatMethod = .coco
+    @UserDefault(CacheKeys.bodyfatMethod.rawValue) var bodyfatMethod: BodyfatMethod = .coco_bri
 }
 
 @propertyWrapper
@@ -119,7 +120,7 @@ struct UserDefault<Value> {
                     return assetConfigId as? Value ?? defaultValue
                 }
                 if let bodyfatMethod = BodyfatMethod(rawValue: stringValue) {
-                     return bodyfatMethod as? Value ?? defaultValue
+                    return bodyfatMethod as? Value ?? defaultValue
                  }
             }
             return container.object(forKey: key) as? Value ?? defaultValue

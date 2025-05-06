@@ -91,10 +91,11 @@
 		152032A62B272E1200B39FC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152032A52B272E1200B39FC8 /* LaunchScreen.storyboard */; };
 		152032AD2B27307B00B39FC8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 152032AB2B27307B00B39FC8 /* Preview Assets.xcassets */; };
 		152032AE2B27307B00B39FC8 /* apple.ply in Resources */ = {isa = PBXBuildFile; fileRef = 152032AC2B27307B00B39FC8 /* apple.ply */; };
-		152032BA2B2731F100B39FC8 /* SwipeCell in Frameworks */ = {isa = PBXBuildFile; productRef = 152032B92B2731F100B39FC8 /* SwipeCell */; };
 		152032C92B2743FC00B39FC8 /* PrismSDK-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 152032C82B2743FC00B39FC8 /* PrismSDK-Info.plist */; };
 		152032D02B27537900B39FC8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 152032CF2B27537900B39FC8 /* Localizable.strings */; };
 		156F7D402B7BCD4900961D29 /* PrismSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 156F7D3F2B7BCD4900961D29 /* PrismSDK */; };
+		3D01D8F32DC9F9B1005E06F2 /* TermsConsentCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D01D8F22DC9F9B1005E06F2 /* TermsConsentCheckbox.swift */; };
+		3D01D8F62DC9FA92005E06F2 /* SwipeCell in Frameworks */ = {isa = PBXBuildFile; productRef = 3D01D8F52DC9FA92005E06F2 /* SwipeCell */; };
 		3D5736542C369AFB00654ED1 /* BodyfatMethod+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736522C369AFB00654ED1 /* BodyfatMethod+Localization.swift */; };
 		3D5736552C369AFB00654ED1 /* AssetsConfigId+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736532C369AFB00654ED1 /* AssetsConfigId+Localization.swift */; };
 		3D5736592C369B4A00654ED1 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736582C369B4A00654ED1 /* InfoButton.swift */; };
@@ -192,6 +193,7 @@
 		152032AC2B27307B00B39FC8 /* apple.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = apple.ply; sourceTree = "<group>"; };
 		152032C82B2743FC00B39FC8 /* PrismSDK-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PrismSDK-Info.plist"; sourceTree = "<group>"; };
 		152032CF2B27537900B39FC8 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		3D01D8F22DC9F9B1005E06F2 /* TermsConsentCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsConsentCheckbox.swift; sourceTree = "<group>"; };
 		3D5736522C369AFB00654ED1 /* BodyfatMethod+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BodyfatMethod+Localization.swift"; sourceTree = "<group>"; };
 		3D5736532C369AFB00654ED1 /* AssetsConfigId+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AssetsConfigId+Localization.swift"; sourceTree = "<group>"; };
 		3D5736582C369B4A00654ED1 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
@@ -208,7 +210,7 @@
 			files = (
 				156F7D402B7BCD4900961D29 /* PrismSDK in Frameworks */,
 				3D85024D2C89A7F7003A5298 /* BetterSafariView in Frameworks */,
-				152032BA2B2731F100B39FC8 /* SwipeCell in Frameworks */,
+				3D01D8F62DC9FA92005E06F2 /* SwipeCell in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +513,7 @@
 		1520321E2B27227600B39FC8 /* Terms Agreement */ = {
 			isa = PBXGroup;
 			children = (
+				3D01D8F22DC9F9B1005E06F2 /* TermsConsentCheckbox.swift */,
 				1520321F2B27227600B39FC8 /* TermsAndConditionsView.swift */,
 			);
 			path = "Terms Agreement";
@@ -628,9 +631,9 @@
 			);
 			name = PrismExampleApp;
 			packageProductDependencies = (
-				152032B92B2731F100B39FC8 /* SwipeCell */,
 				156F7D3F2B7BCD4900961D29 /* PrismSDK */,
 				3D85024C2C89A7F7003A5298 /* BetterSafariView */,
+				3D01D8F52DC9FA92005E06F2 /* SwipeCell */,
 			);
 			productName = PrismReference;
 			productReference = 152031B12B27224C00B39FC8 /* PrismExampleApp.app */;
@@ -661,9 +664,9 @@
 			);
 			mainGroup = 152031A82B27224C00B39FC8;
 			packageReferences = (
-				152032B82B2731F100B39FC8 /* XCRemoteSwiftPackageReference "SwipeCell" */,
 				156F7D3E2B7BCD4900961D29 /* XCRemoteSwiftPackageReference "prismsdk-ios" */,
 				3D85024B2C89A7F7003A5298 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
+				3D01D8F42DC9FA92005E06F2 /* XCRemoteSwiftPackageReference "SwipeCell" */,
 			);
 			productRefGroup = 152031B22B27224C00B39FC8 /* Products */;
 			projectDirPath = "";
@@ -747,6 +750,7 @@
 				152032772B27227600B39FC8 /* GroupedScans.swift in Sources */,
 				152032752B27227600B39FC8 /* OnboardingProfileView.swift in Sources */,
 				152032382B27227600B39FC8 /* Preference.swift in Sources */,
+				3D01D8F32DC9F9B1005E06F2 /* TermsConsentCheckbox.swift in Sources */,
 				152032462B27227600B39FC8 /* NewScanChecklist.swift in Sources */,
 				152032862B27227600B39FC8 /* Formatters.swift in Sources */,
 				1520325A2B27227600B39FC8 /* CollectionViewCarouselLayout.swift in Sources */,
@@ -1020,20 +1024,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		152032B82B2731F100B39FC8 /* XCRemoteSwiftPackageReference "SwipeCell" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/fatbobman/SwipeCell.git";
-			requirement = {
-				kind = exactVersion;
-				version = 0.9.5;
-			};
-		};
 		156F7D3E2B7BCD4900961D29 /* XCRemoteSwiftPackageReference "prismsdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/prismlabs-tech/prismsdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.1;
+			};
+		};
+		3D01D8F42DC9FA92005E06F2 /* XCRemoteSwiftPackageReference "SwipeCell" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fatbobman/SwipeCell";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.8;
 			};
 		};
 		3D85024B2C89A7F7003A5298 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
@@ -1047,15 +1051,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		152032B92B2731F100B39FC8 /* SwipeCell */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 152032B82B2731F100B39FC8 /* XCRemoteSwiftPackageReference "SwipeCell" */;
-			productName = SwipeCell;
-		};
 		156F7D3F2B7BCD4900961D29 /* PrismSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 156F7D3E2B7BCD4900961D29 /* XCRemoteSwiftPackageReference "prismsdk-ios" */;
 			productName = PrismSDK;
+		};
+		3D01D8F52DC9FA92005E06F2 /* SwipeCell */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D01D8F42DC9FA92005E06F2 /* XCRemoteSwiftPackageReference "SwipeCell" */;
+			productName = SwipeCell;
 		};
 		3D85024C2C89A7F7003A5298 /* BetterSafariView */ = {
 			isa = XCSwiftPackageProductDependency;

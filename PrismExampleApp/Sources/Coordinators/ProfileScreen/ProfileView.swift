@@ -66,7 +66,7 @@ struct ProfileView: View {
     @Binding var isPresented: Bool
     @AppStorage("theme") var selectedTheme: ScanTheme = .prism
     @AppStorage("assetConfigId") var selectedAssetConfigId: AssetConfigId = .objTextureBased
-    @AppStorage("bodyfatMethod") var selectedBodyfatMethod: BodyfatMethod = .coco
+    @AppStorage("bodyfatMethod") var selectedBodyfatMethod: BodyfatMethod = .coco_bri
 
     var version: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
@@ -175,12 +175,8 @@ struct ProfileView: View {
                 Divider()
                     .padding(.horizontal)
                     .padding(.vertical, 5)
-
-                HStack {
-                    Checkbox(value: self.$agreedToSharingData, title: "Terms.DataSharing.Checkbox.Title")
-                    Spacer()
-                }
-                .padding(.horizontal)
+                
+                TermsConsentCheckbox(agreedToTerms: self.$agreedToSharingData)
 
                 Divider()
                     .padding()
@@ -252,12 +248,17 @@ struct ProfileView: View {
 
     func logoutUser() {
         Preferences.reset()
+        
+        // First we remove the cached scans dirs
+        self.cache.clear()
+        
+        // Then we remove the apps "Prism" document dir and reset the state
+        // of the scan manager
         self.scanManager.clearDocuments()
         self.scanManager.resetScanList()
+        
         self.onboardingComplete = false
-
         self.isPresented = false
-        self.cache.clear()
     }
 }
 

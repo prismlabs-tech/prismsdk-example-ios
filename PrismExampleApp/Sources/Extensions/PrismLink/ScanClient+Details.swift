@@ -49,12 +49,16 @@ extension ScanDetails {
             // Arms
             .init(type: .leftBicep, value: self.measurements?.midArmLeftFit ?? 0.0),
             .init(type: .rightBicep, value: self.measurements?.midArmRightFit ?? 0.0),
+            .init(type: .leftForearm, value: self.measurements?.forearmLeftFit ?? 0.0),
+            .init(type: .rightForearm, value: self.measurements?.forearmRightFit ?? 0.0),
+            .init(type: .leftWrist, value: self.measurements?.wristLeftFit ?? 0.0),
+            .init(type: .rightWrist, value: self.measurements?.wristRightFit ?? 0.0),
 
             // Legs
             .init(type: .leftThigh, value: self.measurements?.thighLeftFit ?? 0.0),
             .init(type: .rightThigh, value: self.measurements?.thighRightFit ?? 0.0),
             .init(type: .leftCalf, value: self.measurements?.calfLeftFit ?? 0.0),
-            .init(type: .rightCalf, value: self.measurements?.calfRightFit ?? 0.0),
+            .init(type: .rightCalf, value: self.measurements?.calfRightFit ?? 0.0)
         ]
     }
 
@@ -68,14 +72,14 @@ extension ScanDetails {
                     .init(type: .fatMass, value: self.scan.bodyfat?.fatMass ?? 0.0),
                     .init(type: .leanMass, value: self.scan.bodyfat?.leanMass ?? 0.0),
                     .init(type: .weight, value: self.scan.weight.value),
-                    .init(type: .waistToHip, value: self.measurements?.waistToHipRatio ?? 0.0),
+                    .init(type: .waistToHip, value: self.measurements?.waistToHipRatio ?? 0.0)
                 ]
             ),
             ScanSection(
                 title: "ScanDetails.Section.UpperTorso",
                 items: [
                     .init(type: .neck, value: self.measurements?.neckFit ?? 0.0),
-                    .spacer,
+                    .init(type: .shoulders, value: self.measurements?.shoulderFit ?? 0.0),
                     .init(type: .upperChest, value: self.measurements?.upperChestFit ?? 0.0),
                     .init(type: .chest, value: self.measurements?.chestFit ?? 0.0),
                 ]
@@ -92,6 +96,10 @@ extension ScanDetails {
                 items: [
                     .init(type: .leftBicep, value: self.measurements?.midArmLeftFit ?? 0.0),
                     .init(type: .rightBicep, value: self.measurements?.midArmRightFit ?? 0.0),
+                    .init(type: .leftForearm, value: self.measurements?.forearmLeftFit ?? 0.0),
+                    .init(type: .rightForearm, value: self.measurements?.forearmRightFit ?? 0.0),
+                    .init(type: .leftWrist, value: self.measurements?.wristLeftFit ?? 0.0),
+                    .init(type: .rightWrist, value: self.measurements?.wristRightFit ?? 0.0)
                 ]
             ),
             ScanSection(

@@ -1,13 +1,12 @@
-/*
- * Copyright (c) Prismlabs, Inc. and affiliates.
- * All rights reserved.
- *
- * This source code is licensed under the license found in the
- * LICENSE file in the root directory of this source tree.
- */
+//
+//  NewScanView.swift
+//  PrismReference
+//
+//  Created by Anthony Castelli on 2/13/23.
+//
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 struct NewScanView: View {
     @EnvironmentObject private var captureManager: CaptureManager
@@ -18,11 +17,11 @@ struct NewScanView: View {
         PrismSessionView { url in
             self.upload(url)
         } onStatus: { status in
-
         } onDismiss: {
             self.isPresented = false
         }
         .applyTheme(self.selectedTheme.theme)
+        .environment(\.useScanReview, true)
     }
 
     func upload(_ file: URL) {
