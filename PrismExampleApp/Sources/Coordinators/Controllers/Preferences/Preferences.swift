@@ -23,7 +23,6 @@ enum CacheKeys: String {
     case hasScanned
     case assetConfigId
     case bodyfatMethod
-    case onboardingTutorialCompleted
 }
 
 final class Preferences {
@@ -44,7 +43,6 @@ final class Preferences {
         preferences.hasScanned = false
         preferences.assetConfigId = .objTextureBased
         preferences.bodyfatMethod = .coco_bri
-        preferences.onboardingTutorialCompleted = false
     }
 
     /// Sends through the changed key path whenever a change occurs.
@@ -75,8 +73,6 @@ final class Preferences {
     @UserDefault(CacheKeys.hasScanned.rawValue) var hasScanned: Bool = false
     
     @UserDefault(CacheKeys.assetConfigId.rawValue) var assetConfigId: AssetConfigId = .objTextureBased
-
-    @UserDefault(CacheKeys.onboardingTutorialCompleted.rawValue) var onboardingTutorialCompleted: Bool = false
     
     @UserDefault(CacheKeys.bodyfatMethod.rawValue) var bodyfatMethod: BodyfatMethod = .coco_bri
 }
