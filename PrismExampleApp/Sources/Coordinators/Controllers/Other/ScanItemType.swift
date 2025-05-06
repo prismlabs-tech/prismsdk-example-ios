@@ -50,6 +50,10 @@ enum ScanItemType: String, CaseIterable, Identifiable {
     // Arms
     case leftBicep
     case rightBicep
+    case leftForearm
+    case rightForearm
+    case leftWrist
+    case rightWrist
 
     // Legs
     case leftUpperThigh

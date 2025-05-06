@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 struct NewScanView: View {
     @EnvironmentObject private var captureManager: CaptureManager
@@ -18,11 +18,11 @@ struct NewScanView: View {
         PrismSessionView { url in
             self.upload(url)
         } onStatus: { status in
-
         } onDismiss: {
             self.isPresented = false
         }
         .applyTheme(self.selectedTheme.theme)
+        .environment(\.useScanReview, true)
     }
 
     func upload(_ file: URL) {

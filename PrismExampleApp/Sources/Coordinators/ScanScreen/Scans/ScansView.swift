@@ -41,8 +41,8 @@ struct ScansView_Previews: PreviewProvider {
     static var previews: some View {
         ScansView()
             .environmentObject(ApiClient.preview)
-            .environmentObject(CaptureManager.preview)
             .environmentObject(ScanManager.preview)
             .environmentObject(RecordingUploader.preview)
+            .environmentObject(PrismCache())
     }
 }

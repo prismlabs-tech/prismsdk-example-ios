@@ -17,8 +17,8 @@ struct MetricsListSectionView: View {
     let keyStatsRange: ClosedRange<Int> = 0 ... 5
     let upperTorsoRange: ClosedRange<Int> = 6 ... 9
     let lowerTorsoRange: ClosedRange<Int> = 10 ... 11
-    let armsRange: ClosedRange<Int> = 12 ... 13
-    let legsRange: ClosedRange<Int> = 14 ... 17
+    let armsRange: ClosedRange<Int> = 12 ... 17
+    let legsRange: ClosedRange<Int> = 18 ... 21
 
     var body: some View {
         VStack(spacing: 0) {
@@ -87,15 +87,19 @@ struct MetricsListSectionView_Previews: PreviewProvider {
                 ScanItem(type: .waist, value: 0.0),
                 ScanItem(type: .hips, value: 0.0),
 
-                // Arms (12-13)
+                // Arms (12-17)
                 ScanItem(type: .leftBicep, value: 0.0),
                 ScanItem(type: .rightBicep, value: 0.0),
+                ScanItem(type: .leftForearm, value: 0.0),
+                ScanItem(type: .rightForearm, value: 0.0),
+                ScanItem(type: .leftWrist, value: 0.0),
+                ScanItem(type: .rightWrist, value: 0.0),
 
-                // Legs (14-17)
+                // Legs (18-21)
                 ScanItem(type: .leftThigh, value: 0.0),
                 ScanItem(type: .rightThigh, value: 0.0),
                 ScanItem(type: .leftCalf, value: 0.0),
-                ScanItem(type: .rightCalf, value: 0.0),
+                ScanItem(type: .rightCalf, value: 0.0)
             ]
         )
     }

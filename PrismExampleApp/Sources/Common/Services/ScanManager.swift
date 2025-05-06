@@ -123,19 +123,27 @@ class ScanManager: ObservableObject {
     }
 
     func clearDocuments() {
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        print("Removing Prism document directory ...")
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            print("No Prism document directory to remove. Skipping.")
+            return
+        }
+        
         do {
             let fileURLs = try FileManager.default.contentsOfDirectory(
                 at: documentsDirectory,
                 includingPropertiesForKeys: nil,
                 options: .skipsHiddenFiles
             )
+            
             for fileURL in fileURLs {
                 try FileManager.default.removeItem(at: fileURL)
+                print("Removing Prism document dir \(fileURL)")
             }
         } catch {
             print(error)
         }
+        print("Prism document directory removed.")
     }
 
     func resetScanList() {

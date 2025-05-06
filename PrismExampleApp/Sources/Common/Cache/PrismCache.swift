@@ -69,8 +69,14 @@ class PrismCache: ObservableObject {
     }
 
     func clear() {
+        print("Clearing Prism Cache ...")
         guard let cacheDirectory = self.cacheDirectory else { return }
-        try? self.cache.forEach({ try FileManager.default.removeItem(at: cacheDirectory.appendingPathComponent($0.id)) })
+        try? self.cache.forEach({
+            try FileManager.default.removeItem(at: cacheDirectory.appendingPathComponent($0.id))
+            print("Removing \(cacheDirectory.appendingPathComponent($0.id))")
+        })
+        self.cache = []
+        print("Prism cache cleared.")
     }
 
     func validateCache() {
