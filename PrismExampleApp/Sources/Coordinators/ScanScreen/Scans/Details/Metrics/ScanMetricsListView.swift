@@ -44,7 +44,7 @@ struct ScanMetricsListView_Previews: PreviewProvider {
                 ScanItem(type: .fatMassPercentage, value: 1.0),
                 ScanItem(type: .leanMass, value: 1.0),
                 ScanItem(type: .leanMassPercentage, value: 1.0),
-                ScanItem(type: .hips, value: 1.0),
+                ScanItem(type: .hips, value: 1.0)
             ]
         )
     }

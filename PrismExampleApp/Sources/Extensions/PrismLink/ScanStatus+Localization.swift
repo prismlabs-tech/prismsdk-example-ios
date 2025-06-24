@@ -6,18 +6,16 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 extension Scan.Status {
     var name: LocalizedStringKey {
         switch self {
-        case .created: return "ScanStatus.Started"
-        case .processing: return "ScanStatus.Processing"
-        case .ready: return "ScanStatus.Ready"
-        case .failed: return "ScanStatus.Failed"
-        @unknown default:
-            fatalError()
+            case .created: return "ScanStatus.Started"
+            case .processing: return "ScanStatus.Processing"
+            case .ready: return "ScanStatus.Ready"
+            case .failed: return "ScanStatus.Failed"
         }
     }
 }

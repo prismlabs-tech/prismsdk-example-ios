@@ -69,7 +69,7 @@ struct ModelViewer: View {
                 self.isLoading = true
                 let client = ScanClient(client: self.apiClient)
                 let urls = try await client.assetUrls(forScan: self.scan.id)
-                
+            
                 // For texture based assets the order of how assets
                 //  are downloaded is important as there exists a
                 //  strong reference between the model and texture/material
@@ -78,7 +78,6 @@ struct ModelViewer: View {
                 self.material = try await self.downloadAssetAndCacheTheAsset(urls.material, type: .material)
                 self.model = try await self.downloadAssetAndCacheTheAsset(urls.model, type: .model)
 
-                
                 // Stripes currently not supported
                 // self.stripes = try await self.downloadModel(urls.stripes, type: .stripes)
                 
@@ -94,7 +93,9 @@ struct ModelViewer: View {
         if let file = self.cache[self.scan.id, type] {
             return file
         }
-        guard let url else { return self.cache[self.scan.id, type] }
+        guard let url else {
+            return self.cache[self.scan.id, type]
+        }
         
         // There can be scan records prior the assetConfigId was added (they are the ply file only scans)
         let assetConfigId = AssetConfigId(rawValue: self.scan.assetConfigId) ?? .singlePlyOnly
@@ -102,6 +103,7 @@ struct ModelViewer: View {
         let downloader = Downloader(assetConfigId: assetConfigId)
         let tempFile = await downloader.download(file: type, from: url)
         self.cache[self.scan.id, type] = tempFile
+        
         return self.cache[self.scan.id, type]
     }
 

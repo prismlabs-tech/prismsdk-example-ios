@@ -6,13 +6,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 struct SectionItem: Hashable {
     let title: LocalizedStringKey
 
-    func hash(into hasher: inout Hasher) {}
+    func hash(into hasher: inout Hasher) { }
 }
 
 struct ScanListSectionView: View {
@@ -22,7 +22,7 @@ struct ScanListSectionView: View {
 
     init(selectedIndex: Binding<Int>, sections: [LocalizedStringKey]) {
         self._selectedIndex = selectedIndex
-        let mapped = sections.map { SectionItem(title: $0) }
+        let mapped = sections.map({ SectionItem(title: $0) })
         self.selectedSection = mapped.first
         self.sections = mapped
     }

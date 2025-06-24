@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import Combine
 import Foundation
+import Combine
 
 final class PublisherObservableObject: ObservableObject {
     var subscriber: AnyCancellable?

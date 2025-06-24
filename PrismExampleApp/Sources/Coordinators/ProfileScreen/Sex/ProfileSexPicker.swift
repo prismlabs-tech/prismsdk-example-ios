@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 struct ProfileSexPicker: View {
     @Environment(\.prismThemeConfiguration) private var theme: PrismThemeConfiguration
@@ -16,11 +16,9 @@ struct ProfileSexPicker: View {
     func cornersToRound() -> UIRectCorner {
         guard let selectedSex = self.selectedSex else { return [] }
         switch selectedSex {
-        case .male: return [.topLeft, .bottomLeft]
-        case .female: return []
-        case .neutral: return [.topRight, .bottomRight]
-        @unknown default:
-            fatalError()
+            case .male: return [.topLeft, .bottomLeft]
+            case .female: return []
+            case .neutral: return [.topRight, .bottomRight]
         }
     }
 

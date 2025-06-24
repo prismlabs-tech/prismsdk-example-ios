@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 struct FAQItem: Identifiable {
-    let id: UUID = .init()
+    let id: UUID = UUID()
 
     let title: LocalizedStringKey
 }

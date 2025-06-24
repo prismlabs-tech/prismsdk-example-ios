@@ -14,7 +14,7 @@ extension Array where Element == Scan {
     var grouped: [GroupedScans] {
         let dictionary = Dictionary(grouping: self) { "\($0.createdAt.month):\($0.createdAt.year)" }
         let results = dictionary
-            .map { GroupedScans(date: $0.key, scans: $0.value) }
+            .map({ GroupedScans(date: $0.key, scans: $0.value) })
             .sorted(by: \.date, isAscending: false)
         return results
     }
@@ -23,9 +23,9 @@ extension Array where Element == Scan {
 // Unwraps grouped scans into a list for API updates
 extension Array where Element == GroupedScans {
     var list: [Scan] {
-        self.map { $0.scans }
-            .compactMap { $0 }
-            .flatMap { $0 }
+        return self.map({ $0.scans })
+            .compactMap({ $0 })
+            .flatMap({ $0 })
             .sorted(by: \.createdAt)
     }
 }

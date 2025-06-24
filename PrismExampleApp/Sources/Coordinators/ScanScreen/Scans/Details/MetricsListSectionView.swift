@@ -14,11 +14,11 @@ struct MetricsListSectionView: View {
     @State private var selectedSectionIndex: Int = 0
     @State private var selectedMetricIndex: Int = 0
 
-    let keyStatsRange: ClosedRange<Int> = 0 ... 5
-    let upperTorsoRange: ClosedRange<Int> = 6 ... 9
-    let lowerTorsoRange: ClosedRange<Int> = 10 ... 11
-    let armsRange: ClosedRange<Int> = 12 ... 17
-    let legsRange: ClosedRange<Int> = 18 ... 21
+    let keyStatsRange: ClosedRange<Int> = 0...5
+    let upperTorsoRange: ClosedRange<Int> = 6...9
+    let lowerTorsoRange: ClosedRange<Int> = 10...11
+    let armsRange: ClosedRange<Int> = 12...13
+    let legsRange: ClosedRange<Int> = 14...17
 
     var body: some View {
         VStack(spacing: 0) {
@@ -29,7 +29,7 @@ struct MetricsListSectionView: View {
                     "ScanDetails.Section.UpperTorso",
                     "ScanDetails.Section.LowerTorso",
                     "ScanDetails.Section.Arms",
-                    "ScanDetails.Section.Legs",
+                    "ScanDetails.Section.Legs"
                 ]
             )
             ScanMetricsListView(selectedIndex: self.$selectedMetricIndex, items: self.items)
@@ -39,22 +39,22 @@ struct MetricsListSectionView: View {
         }
         .onChange(of: self.selectedSectionIndex) { newValue in
             switch newValue {
-            case 0: self.checkMetricRange(self.keyStatsRange)
-            case 1: self.checkMetricRange(self.upperTorsoRange)
-            case 2: self.checkMetricRange(self.lowerTorsoRange)
-            case 3: self.checkMetricRange(self.armsRange)
-            case 4: self.checkMetricRange(self.legsRange)
-            default: break
+                case 0: self.checkMetricRange(self.keyStatsRange)
+                case 1: self.checkMetricRange(self.upperTorsoRange)
+                case 2: self.checkMetricRange(self.lowerTorsoRange)
+                case 3: self.checkMetricRange(self.armsRange)
+                case 4: self.checkMetricRange(self.legsRange)
+                default: break
             }
         }
         .onChange(of: self.selectedMetricIndex) { newValue in
             switch newValue {
-            case self.keyStatsRange: self.selectedSectionIndex = 0
-            case self.upperTorsoRange: self.selectedSectionIndex = 1
-            case self.lowerTorsoRange: self.selectedSectionIndex = 2
-            case self.armsRange: self.selectedSectionIndex = 3
-            case self.legsRange: self.selectedSectionIndex = 4
-            default: break
+                case self.keyStatsRange: self.selectedSectionIndex = 0
+                case self.upperTorsoRange: self.selectedSectionIndex = 1
+                case self.lowerTorsoRange: self.selectedSectionIndex = 2
+                case self.armsRange: self.selectedSectionIndex = 3
+                case self.legsRange: self.selectedSectionIndex = 4
+                default: break
             }
         }
     }
@@ -65,6 +65,7 @@ struct MetricsListSectionView: View {
     }
 }
 
+#if DEBUG
 struct MetricsListSectionView_Previews: PreviewProvider {
     static var previews: some View {
         MetricsListSectionView(
@@ -74,6 +75,8 @@ struct MetricsListSectionView_Previews: PreviewProvider {
                 ScanItem(type: .leanMassPercentage, value: 0.0),
                 ScanItem(type: .fatMass, value: 0.0),
                 ScanItem(type: .leanMass, value: 0.0),
+                ScanItem(type: .vatMass, value: 0.0),
+                ScanItem(type: .vatPercentage, value: 0.0),
                 ScanItem(type: .weight, value: 0.0),
                 ScanItem(type: .waistToHip, value: 0.0),
 
@@ -104,3 +107,4 @@ struct MetricsListSectionView_Previews: PreviewProvider {
         )
     }
 }
+#endif

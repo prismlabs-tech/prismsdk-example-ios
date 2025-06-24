@@ -57,7 +57,7 @@ extension GroupedScans: Hashable {
 
 extension GroupedScans: Equatable {
     static func == (lhs: GroupedScans, rhs: GroupedScans) -> Bool {
-        lhs.id == rhs.id &&
+        return lhs.id == rhs.id &&
             lhs.month == rhs.month &&
             lhs.year == rhs.year &&
             lhs.scans == rhs.scans

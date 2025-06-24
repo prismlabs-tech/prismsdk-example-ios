@@ -44,7 +44,7 @@ func getAssetsBundleFileExtensions(for assetConfigId: AssetConfigId) -> AssetsBu
     switch(assetConfigId){
     case .singlePlyOnly:
         return PlyAssetsBundle()
-    case .objTextureBased:
+    case .objTextureBased, .objTextureBasedV2:
         return ObjTextureBasedAssetsBundle()
     }
 }

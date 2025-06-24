@@ -27,12 +27,14 @@ struct ScanDetails {
 
 extension ScanDetails {
     var items: [ScanItem] {
-        [
+        return [
             // Key Stats
             .init(type: .bodyFat, value: self.scan.bodyfat?.bodyfatPercentage ?? 0.0),
             .init(type: .leanMassPercentage, value: self.scan.bodyfat?.leanMassPercentage ?? 0.0),
             .init(type: .fatMass, value: self.scan.bodyfat?.fatMass ?? 0.0),
             .init(type: .leanMass, value: self.scan.bodyfat?.leanMass ?? 0.0),
+            .init(type: .vatMass, value: self.scan.bodyfat?.vatMass ?? 0.0),
+            .init(type: .vatPercentage, value: self.scan.bodyfat?.vatPercentage ?? 0.0),
             .init(type: .weight, value: self.scan.weight.value),
             .init(type: .waistToHip, value: self.measurements?.waistToHipRatio ?? 0.0),
 
@@ -63,7 +65,7 @@ extension ScanDetails {
     }
 
     var data: [ScanSection] {
-        [
+        return [
             ScanSection(
                 title: "ScanDetails.Section.KeyStats",
                 items: [
@@ -71,46 +73,33 @@ extension ScanDetails {
                     .init(type: .leanMassPercentage, value: self.scan.bodyfat?.leanMassPercentage ?? 0.0),
                     .init(type: .fatMass, value: self.scan.bodyfat?.fatMass ?? 0.0),
                     .init(type: .leanMass, value: self.scan.bodyfat?.leanMass ?? 0.0),
+                    .init(type: .vatMass, value: self.scan.bodyfat?.vatMass ?? 0.0),
+                    .init(type: .vatPercentage, value: self.scan.bodyfat?.vatPercentage ?? 0.0),
                     .init(type: .weight, value: self.scan.weight.value),
                     .init(type: .waistToHip, value: self.measurements?.waistToHipRatio ?? 0.0)
                 ]
             ),
             ScanSection(
-                title: "ScanDetails.Section.UpperTorso",
+                title: "ScanDetails.Section.Circumference",
                 items: [
                     .init(type: .neck, value: self.measurements?.neckFit ?? 0.0),
                     .init(type: .shoulders, value: self.measurements?.shoulderFit ?? 0.0),
                     .init(type: .upperChest, value: self.measurements?.upperChestFit ?? 0.0),
                     .init(type: .chest, value: self.measurements?.chestFit ?? 0.0),
-                ]
-            ),
-            ScanSection(
-                title: "ScanDetails.Section.LowerTorso",
-                items: [
                     .init(type: .waist, value: self.measurements?.waistFit ?? 0.0),
                     .init(type: .hips, value: self.measurements?.hipsFit ?? 0.0),
-                ]
-            ),
-            ScanSection(
-                title: "ScanDetails.Section.Arms",
-                items: [
                     .init(type: .leftBicep, value: self.measurements?.midArmLeftFit ?? 0.0),
                     .init(type: .rightBicep, value: self.measurements?.midArmRightFit ?? 0.0),
+                    .init(type: .leftThigh, value: self.measurements?.thighLeftFit ?? 0.0),
+                    .init(type: .rightThigh, value: self.measurements?.thighRightFit ?? 0.0),
+                    .init(type: .leftCalf, value: self.measurements?.calfLeftFit ?? 0.0),
+                    .init(type: .rightCalf, value: self.measurements?.calfRightFit ?? 0.0),
                     .init(type: .leftForearm, value: self.measurements?.forearmLeftFit ?? 0.0),
                     .init(type: .rightForearm, value: self.measurements?.forearmRightFit ?? 0.0),
                     .init(type: .leftWrist, value: self.measurements?.wristLeftFit ?? 0.0),
                     .init(type: .rightWrist, value: self.measurements?.wristRightFit ?? 0.0)
                 ]
-            ),
-            ScanSection(
-                title: "ScanDetails.Section.Legs",
-                items: [
-                    .init(type: .leftThigh, value: self.measurements?.thighLeftFit ?? 0.0),
-                    .init(type: .rightThigh, value: self.measurements?.thighRightFit ?? 0.0),
-                    .init(type: .leftCalf, value: self.measurements?.calfLeftFit ?? 0.0),
-                    .init(type: .rightCalf, value: self.measurements?.calfRightFit ?? 0.0),
-                ]
-            ),
+            )
         ]
     }
 }

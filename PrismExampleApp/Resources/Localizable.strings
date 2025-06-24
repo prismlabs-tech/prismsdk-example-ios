@@ -22,6 +22,8 @@
 /* Body Scan Items */
 "BodyScanType.fatMassPercentage" = "Body Fat %";
 "BodyScanType.leanMassPercentage" = "Lean Mass %";
+"BodyScanType.vatMass" = "Visceral Fat Mass %";
+"BodyScanType.vatPercentage" = "Visceral Fat %";
 "BodyScanType.fatMass" = "Fat Mass";
 "BodyScanType.leanMass" = "Lean Mass";
 "BodyScanType.weight" = "Weight";
@@ -73,11 +75,13 @@
 "Profile.DoneButton.Title" = "Done";
 "Profile.NavigationBar.Title" = "Profile";
 "Profile.Form.AvatarEnabled" = "3D Avatar";
+"Profile.Form.ScanPreviewEnable" = "Scan Preview";
 
 /* Terms and Conditions */
 "Terms.Consent.Title" = "A note about your privacy and our terms of use";
 "Terms.Consent.Note" = "When you do a body scan, we send your images and data (including gender, height & weight, but not name or contact info) to Prism Labs to make a 3D model of your entire body, including basic face geometry. Prism Labs then generates body metrics and insights like body composition, which are shared back with us to display your body metrics. The data in aggregate is also used to improve the technology.";
 "Terms.Consent.Checkbox" = "I consent to the collection, use, disclosure, and storage of my images, bodymaps and data as described in more detail in %@.";
+"Terms.Consent.Checkbox.DataSharing" = "I consent the collection, use, disclosure and storage of my images, bodymaps and data to improve Prism Labs’s technology.";
 
 /* How To */
 "HowTo.Title" = "How Body Mapping Works";
@@ -125,7 +129,7 @@
 "ScanList.State.Uploading" = "Uploading";
 "ScanList.State.Loading" = "Loading...";
 "ScanList.Uploading.Banner.Message" = "Wait until your last scan has finished uploading before starting a new scan.";
-"ScanList.Measurements.FatLean %@ %@" = "%@ fat, %@ lean";
+"ScanList.Measurements.FatLean %@ %@ %@" = "%@ fat, %@ lean %@ visceral";
 "ScanList.ViewFullReport" = "View Full Report";
 
 // FAQ
@@ -154,6 +158,7 @@
 /* Scan Assets Bundle ID */
 "ScanAssetsBundleID.SinglePly" = "Vertex-based coloring (Legacy)";
 "ScanAssetsBundleID.ObjTextureBased" = "Texture-based coloring";
+"ScanAssetsBundleID.ObjTextureBasedV2" = "Texture-based coloring V2";
 
 /* Bodyfat Methods */
 "BodyfatMethod.Adam" = "Automatic Athlete Mode";

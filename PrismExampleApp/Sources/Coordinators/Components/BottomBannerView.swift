@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 struct BottomBannerView: View {
     @GestureState private var isTapped: Bool = false
@@ -17,7 +17,7 @@ struct BottomBannerView: View {
 
     var tapGesture: some Gesture {
         DragGesture(minimumDistance: 0)
-            .updating(self.$isTapped) { _, isTapped, _ in
+            .updating(self.$isTapped) { (_, isTapped, _) in
                 isTapped = true
             }
             .onEnded { _ in

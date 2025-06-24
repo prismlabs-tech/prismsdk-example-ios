@@ -6,12 +6,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 struct LearnMoreButton: View {
     let title: LocalizedStringKey
-    var action: () -> Void
+    var action: (() -> Void)
 
     var body: some View {
         Button {
@@ -43,6 +43,6 @@ struct LearnMoreButton: View {
 
 struct LearnMoreButton_Previews: PreviewProvider {
     static var previews: some View {
-        LearnMoreButton(title: "Test") {}
+        LearnMoreButton(title: "Test") { }
     }
 }

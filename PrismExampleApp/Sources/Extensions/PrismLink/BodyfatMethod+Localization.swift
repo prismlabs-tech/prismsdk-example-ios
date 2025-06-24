@@ -12,7 +12,7 @@ import PrismSDK
 extension BodyfatMethod {
     var name: LocalizedStringKey {
         switch self {
-        case .adam:
+        case .adam: 
             return "BodyfatMethod.Adam"
         case .army:
             return "BodyfatMethod.Army"
@@ -26,7 +26,7 @@ extension BodyfatMethod {
             return "BodyfatMethod.CocoLegacy"
         case .extended_navy_thinboost:
             return "BodyfatMethod.ExtendedNavyThinboost"
-        case .tina_fit:
+        case .tina_fit: 
             return "BodyfatMethod.TinaFit"
         }
     }

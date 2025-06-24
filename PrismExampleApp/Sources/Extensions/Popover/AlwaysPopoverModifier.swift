@@ -18,7 +18,6 @@ struct AlwaysPopoverModifier<PopoverContent>: ViewModifier where PopoverContent:
     private struct Store {
         var anchorView = UIView()
     }
-
     @State private var store = Store()
 
     func body(content: Content) -> some View {
@@ -33,7 +32,7 @@ struct AlwaysPopoverModifier<PopoverContent>: ViewModifier where PopoverContent:
         let contentController = ContentViewController(rootView: self.contentBlock(), isPresented: self.isPresented)
         contentController.modalPresentationStyle = .popover
 
-        let view = self.store.anchorView
+        let view = store.anchorView
         guard let popover = contentController.popoverPresentationController else { return }
         popover.sourceView = view
         popover.sourceRect = view.bounds
@@ -56,6 +55,6 @@ struct AlwaysPopoverModifier<PopoverContent>: ViewModifier where PopoverContent:
             self.uiView
         }
 
-        func updateUIView(_ uiView: UIViewType, context: Self.Context) {}
+        func updateUIView(_ uiView: UIViewType, context: Self.Context) { }
     }
 }

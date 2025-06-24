@@ -6,22 +6,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 struct ScanDetailsGridView: View {
     let data: [ScanSection]
 
     let gridColumns = [
         GridItem(.flexible()),
-        GridItem(.flexible()),
+        GridItem(.flexible())
     ]
 
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(LinearGradient.prismGradient, lineWidth: 1)
-
+        ScrollView {
             LazyVGrid(
                 columns: self.gridColumns,
                 alignment: .leading,
@@ -38,7 +35,6 @@ struct ScanDetailsGridView: View {
             }
             .padding()
         }
-        .fixedSize(horizontal: false, vertical: true)
     }
 
     func header(title: LocalizedStringKey) -> some View {
@@ -58,16 +54,16 @@ struct ScanDetailsGridView_Previews: PreviewProvider {
                     title: "Jan 1, 2023",
                     items: [
                         .init(type: .fatMass, value: 5.0),
-                        .init(type: .leanMass, value: 5.0),
+                        .init(type: .leanMass, value: 5.0)
                     ]
                 ),
                 .init(
                     title: "ScanDetails.Section.Circumferences",
                     items: [
                         .init(type: .neck, value: 5.0),
-                        .init(type: .rightLowerThigh, value: 5.0),
+                        .init(type: .rightLowerThigh, value: 5.0)
                     ]
-                ),
+                )
             ]
         )
     }

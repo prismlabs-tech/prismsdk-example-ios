@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 struct FAQList: View {
     let title: LocalizedStringKey
@@ -49,7 +49,7 @@ struct FAQList_Previews: PreviewProvider {
         FAQList(
             title: "This is a test title",
             items: [
-                .init(title: "Test"),
+                .init(title: "Test")
             ]
         )
         .padding()

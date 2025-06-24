@@ -47,7 +47,7 @@ struct ProfileWeightContent: View {
                         .stroke(Color.prismBase30, lineWidth: 1)
                 )
 
-                CustomStepper(value: self.$userWeight, range: 10 ... 600)
+                CustomStepper(value: self.$userWeight, range: 10...600)
                     .padding(.leading, 10.0)
             }
         }

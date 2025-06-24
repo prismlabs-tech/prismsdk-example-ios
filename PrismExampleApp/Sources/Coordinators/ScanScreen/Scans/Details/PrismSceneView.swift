@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import SceneKit
 import SwiftUI
+import SceneKit
 
 struct Camera {
     static let `default` = Camera(
@@ -45,7 +45,7 @@ struct PrismSceneView: UIViewRepresentable {
     @Binding var camera: Camera?
 
     func makeUIView(context: Context) -> SCNView {
-        context.coordinator.view
+        return context.coordinator.view
     }
 
     func updateUIView(_ uiView: UIViewType, context: Context) {
@@ -87,18 +87,18 @@ struct PrismSceneView: UIViewRepresentable {
 
         /// Adds all of the nodes to the scene
         private func addNodes(from scene: SCNScene, and stripes: SCNScene?) {
-            scene.rootNode.childNodes.forEach { node in
+            scene.rootNode.childNodes.forEach({ node in
                 node.name = "Model"
                 self.setDefaultPosition(for: node)
                 self.scene.rootNode.addChildNode(node)
-            }
+            })
 
             let model = self.scene.rootNode.childNodes.first(where: { $0.name == "Model" })
-            stripes?.rootNode.childNodes.forEach { node in
+            stripes?.rootNode.childNodes.forEach({ node in
                 node.name = "Stripes"
                 node.geometry?.materials = [self.createMaterial(with: UIColor(self.parent.stripeColor))]
                 model?.addChildNode(node)
-            }
+            })
         }
 
         /// Creates the material color needed to highlight the rings.
@@ -159,8 +159,8 @@ struct PrismSceneView: UIViewRepresentable {
             self.parent.camera = nil
         }
 
-        func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {}
+        func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) { }
 
-        func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {}
+        func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) { }
     }
 }

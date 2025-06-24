@@ -33,19 +33,18 @@ struct ScanListItemProcessing: View {
                         .foregroundColor(Color.prismBlack)
                     Text(
                         self.scan.status == .created &&
-                            self.scan.id == self.uploader.currentScanId && (0.1 ... 0.99).contains(self.uploader.progress)
-                            ?
-                            "ScanList.State.Uploading" : self.scan.status.name
+                        self.scan.id == self.uploader.currentScanId && (0.1...0.99).contains(self.uploader.progress)
+                        ?
+                        "ScanList.State.Uploading" : self.scan.status.name
                     )
-                    .font(.body)
-                    .foregroundColor(Color.prismBase50)
+                        .font(.body)
+                        .foregroundColor(Color.prismBase50)
                 }
                 Spacer()
             }
-            if
-                self.scan.status == .created,
-                self.scan.id == self.uploader.currentScanId,
-                (0.1 ... 0.99).contains(self.uploader.progress) {
+            if self.scan.status == .created &&
+                self.scan.id == self.uploader.currentScanId &&
+                (0.1...0.99).contains(self.uploader.progress) {
                 ProgressView(value: self.uploader.progress, total: 1.0)
                     .progressViewStyle(LinearProgressViewStyle(tint: Color.prismYellow))
                     .transition(.slide)

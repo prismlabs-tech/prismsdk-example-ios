@@ -15,11 +15,11 @@ extension Date {
     }
 
     var month: Int {
-        Calendar.current.component(.month, from: self)
+        return Calendar.current.component(.month, from: self)
     }
 
     var year: Int {
-        Calendar.current.component(.year, from: self)
+        return Calendar.current.component(.year, from: self)
     }
 
     public init(era: Int?, year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int, nanosecond: Int, on calendar: Calendar) {

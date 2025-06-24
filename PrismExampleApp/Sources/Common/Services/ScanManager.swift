@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import Combine
 import Foundation
+import Combine
 import PrismSDK
 
 extension Notification.Name {
@@ -84,7 +84,7 @@ class ScanManager: ObservableObject {
         self.scans = currentScans.grouped
         Task {
             do {
-                let _ = try await self.scanClient.deleteScan(scan.id)
+                _ = try await self.scanClient.deleteScan(scan.id)
             } catch {
                 print("Error Deleteing Scan: \(scan.id) \(error)")
             }
@@ -95,17 +95,16 @@ class ScanManager: ObservableObject {
         let currentScans = self.scans.list
 
         var scans = Set<Scan>(newScans)
-        currentScans.forEach { currentScan in
+        currentScans.forEach({ currentScan in
             if !scans.contains(where: { $0.id == currentScan.id }) {
                 scans.insert(currentScan)
             }
-        }
+        })
 
         return Array(scans).grouped
     }
 
-    @objc
-    private func refreshScansFromNotification() {
+    @objc private func refreshScansFromNotification() {
         Task {
             try await self.refreshScans()
         }
@@ -113,7 +112,7 @@ class ScanManager: ObservableObject {
 
     private func cleanUploads() {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let readyScans = self.scans.map(\.scans).compactMap { $0 }.flatMap { $0 }.filter { ![Scan.Status.created].contains($0.status) }
+        let readyScans = self.scans.map(\.scans).compactMap({ $0 }).flatMap({ $0 }).filter({ ![Scan.Status.created].contains($0.status) })
         for scan in readyScans {
             let file = documentsDirectory.appendingPathComponent("scan_\(scan.id).zip")
             guard FileManager.default.fileExists(atPath: file.path) else { continue }

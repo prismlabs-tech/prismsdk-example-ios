@@ -6,11 +6,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
-struct NewScanCardView: View {
-
+struct ScanCardView: View {
     @EnvironmentObject private var apiClient: ApiClient
     @Preference(\.hasScanned) private var hasScanned: Bool
     @Preference(\.lastScanId) private var lastScanId: String
@@ -98,14 +97,14 @@ struct NewScanCardView: View {
     }
 }
 
-struct NewScanCardView_Previews: PreviewProvider {
+struct ScanCardView_Previews: PreviewProvider {
     static var previews: some View {
-        NewScanCardView(isPresented: .constant(true)) {}
+        ScanCardView(isPresented: .constant(true)) { }
             .environmentObject(ApiClient.preview)
             .previewDisplayName("New Scan")
             .preference(\.hasScanned, false)
 
-        NewScanCardView(isPresented: .constant(true)) {}
+        ScanCardView(isPresented: .constant(true)) { }
             .environmentObject(ApiClient.preview)
             .previewDisplayName("Returning Scan")
             .preference(\.hasScanned, true)

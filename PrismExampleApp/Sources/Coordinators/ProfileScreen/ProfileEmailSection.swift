@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 struct ProfileEmailSection: View {
     @Environment(\.isEnabled) private var isEnabled: Bool
