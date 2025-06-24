@@ -62,10 +62,11 @@ struct ProfileView: View {
     @Preference(\.userAge) private var userAge: Int
     @Preference(\.onboardingComplete) private var onboardingComplete: Bool
     @Preference(\.agreedToSharingData) private var agreedToSharingData: Bool
+    @Preference(\.useScanReview) private var useScanReview: Bool
 
     @Binding var isPresented: Bool
     @AppStorage("theme") var selectedTheme: ScanTheme = .prism
-    @AppStorage("assetConfigId") var selectedAssetConfigId: AssetConfigId = .objTextureBased
+    @AppStorage("assetConfigId") var selectedAssetConfigId: AssetConfigId = .objTextureBasedV2
     @AppStorage("bodyfatMethod") var selectedBodyfatMethod: BodyfatMethod = .coco_bri
 
     var version: String {
@@ -160,44 +161,45 @@ struct ProfileView: View {
 
     var body: some View {
         NavigationView {
-        VStack(spacing: 0) {
-            ScrollView {
-                VStack(spacing: 20) {
-                    ProfileEmailSection()
-                        .disabled(true)
-                    ProfileSexSection()
-                    ProfileHeightSection()
-                    ProfileWeightSection()
-                    ProfileAgeSection()
-                }
-                .padding(.horizontal)
-
-                Divider()
+            VStack(spacing: 0) {
+                ScrollView {
+                    VStack(spacing: 20) {
+                        ProfileEmailSection()
+                            .disabled(true)
+                        ProfileSexSection()
+                        ProfileHeightSection()
+                        ProfileWeightSection()
+                        ProfileAgeSection()
+                        ScanPreviewToggle()
+                    }
                     .padding(.horizontal)
-                    .padding(.vertical, 5)
-                
-                TermsConsentCheckbox(agreedToTerms: self.$agreedToSharingData)
-
-                Divider()
-                    .padding()
-
-                self.themePicker
-                
-                Divider()
-                    .padding()
-                
-                self.bodyfatMethodPicker
-        
-                    Divider()
-                        .padding()
                     
-                    self.assetConfigIdPicker
-                    
-                    Divider()
-                        .padding()
-                    Text(self.version)
-                        .foregroundColor(.gray)
-                        .padding()
+                    VStack(spacing: 20) {
+                        Divider()
+                        
+                        Checkbox(value: self.$agreedToSharingData, title: "Terms.Consent.Checkbox.DataSharing")
+                        
+                        Divider()
+                        
+                        self.themePicker
+                        
+                        Divider()
+                        
+                        self.bodyfatMethodPicker
+                        
+                        Divider()
+                        
+                        self.assetConfigIdPicker
+                        
+                        Divider()
+                        
+                        Text(self.version)
+                            .foregroundColor(.gray)
+                            .padding()
+                        
+                    }
+                    .padding(.horizontal)
+                        
                     Button {
                         HapticFeedback.light()
                         self.logoutUser()
@@ -234,6 +236,7 @@ struct ProfileView: View {
             height: .init(value: Double(self.userHeight), unit: .inches),
             researchConsent: self.agreedToSharingData
         )
+                
         Task {
             do {
                 let client = UserClient(client: self.apiClient)

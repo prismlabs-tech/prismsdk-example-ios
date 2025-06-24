@@ -15,6 +15,7 @@ extension AssetConfigId {
         switch self {
             case .singlePlyOnly: return "ScanAssetsBundleID.SinglePly"
             case .objTextureBased: return "ScanAssetsBundleID.ObjTextureBased"
+            case .objTextureBasedV2: return "ScanAssetsBundleID.ObjTextureBasedV2"
         }
     }
 }
@@ -25,6 +26,7 @@ extension AssetConfigId {
         switch self {
             case .singlePlyOnly: return "a7224818-b0ee-44ee-9984-1c47b086d269"
             case .objTextureBased: return "c979ab6b-e46b-4c1c-89e1-bb02435b5cbf"
+            case .objTextureBasedV2: return "25f6d3a6-a634-40c3-8452-0342bee242d0"
         }
     }
 
@@ -32,6 +34,7 @@ extension AssetConfigId {
         switch rawValue {
             case "a7224818-b0ee-44ee-9984-1c47b086d269": self = .singlePlyOnly
             case "c979ab6b-e46b-4c1c-89e1-bb02435b5cbf": self = .objTextureBased
+            case "25f6d3a6-a634-40c3-8452-0342bee242d0": self = .objTextureBasedV2
             default: return nil
         }
     }

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct AgePicker: View {
-    private let ageRange: ClosedRange<Int> = 18 ... 100
+    private let ageRange: ClosedRange<Int> = 18...100
 
     @Preference(\.userAge) private var age: Int
 
@@ -25,7 +25,7 @@ struct AgePicker: View {
             ForEach(self.ageRange, id: \.self) { index in
                 Text(
                     "\(index) Profile.Form.Age.Value",
-                    comment: "The age of the user for the profile"
+                     comment: "The age of the user for the profile"
                 )
                 .tag(index)
             }

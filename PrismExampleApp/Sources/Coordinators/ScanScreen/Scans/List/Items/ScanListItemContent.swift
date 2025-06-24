@@ -22,7 +22,7 @@ extension PrismCache {
 struct ScanListItemContent: View {
     @EnvironmentObject var cache: PrismCache
     @Preference(\.userSex) private var userSex: Sex?
-
+    
     var weightFormat: String {
         let formatter = ScanItemType.weight.format(self.scan.weight.value)
         return "\(formatter.measurement) \(formatter.unit)"
@@ -34,14 +34,20 @@ struct ScanListItemContent: View {
     }
 
     var bodyFatPercentage: String {
-        guard let value = self.scan.bodyfat?.bodyfatPercentage else { return "--%"}
+        guard let value = self.scan.bodyfat?.bodyfatPercentage else { return "--"}
         let formatter = ScanItemType.fatMassPercentage.format(value)
         return "\(formatter.measurement)\(formatter.unit)"
     }
 
     var leanPercentage: String {
-        guard let value = self.scan.bodyfat?.leanMassPercentage else { return "--%"}
+        guard let value = self.scan.bodyfat?.leanMassPercentage else { return "--"}
         let formatter = ScanItemType.leanMassPercentage.format(value)
+        return "\(formatter.measurement)\(formatter.unit)"
+    }
+    
+    var visceralPercentage: String {
+        guard let value = self.scan.bodyfat?.vatPercentage else { return "--"}
+        let formatter = ScanItemType.vatPercentage.format(value)
         return "\(formatter.measurement)\(formatter.unit)"
     }
 
@@ -68,7 +74,8 @@ struct ScanListItemContent: View {
                     Text(self.weightFormat)
                         .font(.body)
                         .foregroundColor(.prismBase50)
-                    Text("ScanList.Measurements.FatLean \(self.bodyFatPercentage) \(self.leanPercentage)")
+                    Text("ScanList.Measurements.FatLean \(self.bodyFatPercentage) \(self.leanPercentage) \(self.visceralPercentage)")
+                        .multilineTextAlignment(.leading)
                         .font(.body)
                         .foregroundColor(.prismBase50)
                     Text(self.bodyFatMethod)

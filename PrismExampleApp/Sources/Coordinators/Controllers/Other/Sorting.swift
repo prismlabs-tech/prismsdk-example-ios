@@ -16,15 +16,15 @@ enum Sorting: String, Identifiable, CaseIterable {
 
     var name: LocalizedStringKey {
         switch self {
-        case .latest: "Sorting.Latest"
-        case .newest: "Sorting.Newest"
+            case .latest: return "Sorting.Latest"
+            case .newest: return "Sorting.Newest"
         }
     }
 
     var key: String {
         switch self {
-        case .latest: "desc"
-        case .newest: "asc"
+            case .latest: return "desc"
+            case .newest: return "asc"
         }
     }
 }
@@ -32,16 +32,16 @@ enum Sorting: String, Identifiable, CaseIterable {
 extension Sorting {
     var rawValue: RawValue {
         switch self {
-        case .latest: "latest"
-        case .newest: "newest"
+            case .latest: return "latest"
+            case .newest: return "newest"
         }
     }
 
     init?(rawValue: RawValue) {
         switch rawValue {
-        case "latest": self = .latest
-        case "newest": self = .newest
-        default: return nil
+            case "latest": self = .latest
+            case "newest": self = .newest
+            default: return nil
         }
     }
 }

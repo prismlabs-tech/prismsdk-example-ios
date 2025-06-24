@@ -1,16 +1,14 @@
-/*
- * Copyright (c) Prismlabs, Inc. and affiliates.
- * All rights reserved.
- *
- * This source code is licensed under the license found in the
- * LICENSE file in the root directory of this source tree.
- */
+//
+//  ScanCardView.swift
+//  PrismReference
+//
+//  Created by Anthony Castelli on 2/10/23.
+//
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
-struct NewScanCardView: View {
-
+struct ScanCardView: View {
     @EnvironmentObject private var apiClient: ApiClient
     @Preference(\.hasScanned) private var hasScanned: Bool
     @Preference(\.lastScanId) private var lastScanId: String
@@ -98,14 +96,14 @@ struct NewScanCardView: View {
     }
 }
 
-struct NewScanCardView_Previews: PreviewProvider {
+struct ScanCardView_Previews: PreviewProvider {
     static var previews: some View {
-        NewScanCardView(isPresented: .constant(true)) {}
+        ScanCardView(isPresented: .constant(true)) { }
             .environmentObject(ApiClient.preview)
             .previewDisplayName("New Scan")
             .preference(\.hasScanned, false)
 
-        NewScanCardView(isPresented: .constant(true)) {}
+        ScanCardView(isPresented: .constant(true)) { }
             .environmentObject(ApiClient.preview)
             .previewDisplayName("Returning Scan")
             .preference(\.hasScanned, true)

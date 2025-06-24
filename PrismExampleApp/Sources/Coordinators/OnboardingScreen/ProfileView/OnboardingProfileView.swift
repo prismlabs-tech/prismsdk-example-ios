@@ -11,6 +11,7 @@ import PrismSDK
 
 struct OnboardingProfileView: View {
     @EnvironmentObject private var apiClient: ApiClient
+    @Preference(\.onboardingComplete) private var onboardingComplete: Bool
     @Preference(\.userEmail) private var userEmail: String
     @Preference(\.userSex) private var userSex: Sex?
     @Preference(\.userHeight) private var userHeight: Int
@@ -46,14 +47,13 @@ struct OnboardingProfileView: View {
                         ProfileAgeSection()
                     }
                     .padding()
-
-                    NavigationLink(destination: TermsAndConditionsView(isPresented: self.$isPresented), tag: 1, selection: self.$action) {
-                        EmptyView()
-                    }
                 }
+                
                 Button {
                     HapticFeedback.light()
                     self.updateUser()
+                    self.isPresented.toggle()
+                    self.onboardingComplete.toggle()
                 } label: {
                     Text("Button.Continue", comment: "Profile continue button title")
                 }
@@ -78,7 +78,7 @@ struct OnboardingProfileView: View {
         Task {
             do {
                 let client = UserClient(client: self.apiClient)
-                _ = try await client.create(user: data)
+                let _ = try await client.create(user: data)
                 self.action = 1
             } catch {
                 print("Error creating user: \(error)")
@@ -91,6 +91,5 @@ struct OnboardingProfileView: View {
     static var previews: some View {
         OnboardingProfileView(isPresented: .constant(true))
             .environmentObject(ApiClient.preview)
-            .environmentObject(PrismCache())
     }
  }

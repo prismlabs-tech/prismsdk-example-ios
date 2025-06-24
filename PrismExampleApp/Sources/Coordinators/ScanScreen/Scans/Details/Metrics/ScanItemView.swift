@@ -6,13 +6,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 extension LinearGradient {
     static let prismBase10Gradient = LinearGradient(
         colors: [
-            Color.prismBase10,
+            Color.prismBase10
         ],
         startPoint: .leading,
         endPoint: .trailing
@@ -39,7 +39,7 @@ struct ScanItemView: View {
                     Text(measurement)
                         .font(.title.weight(.regular))
                         .foregroundColor(Color.prismBlack) +
-                        Text(unit)
+                    Text(unit)
                         .font(.title3.weight(.light))
                         .foregroundColor(Color.prismBlack)
                     Spacer()

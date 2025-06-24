@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 struct Card<Content: View>: View {
 
@@ -21,8 +21,8 @@ struct Card<Content: View>: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(.white)
-                .shadow(color: .prismBase10, radius: 2, x: 0, y: 2)
+            .fill(.white)
+            .shadow(color: .prismBase10, radius: 2, x: 0, y: 2)
         )
         .overlay(
             RoundedRectangle(cornerRadius: 12)

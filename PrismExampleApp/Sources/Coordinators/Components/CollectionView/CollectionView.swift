@@ -6,16 +6,16 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import SwiftUI
 import UIKit
+import SwiftUI
 
 struct CollectionView<Collections, CellContent>: UIViewControllerRepresentable where
-    Collections: RandomAccessCollection,
-    Collections.Index == Int,
-    Collections.Element: RandomAccessCollection,
-    Collections.Element.Index == Int,
-    Collections.Element.Element: Identifiable,
-    CellContent: View {
+Collections: RandomAccessCollection,
+Collections.Index == Int,
+Collections.Element: RandomAccessCollection,
+Collections.Element.Index == Int,
+Collections.Element.Element: Identifiable,
+CellContent: View {
     typealias Row = Collections.Element
     typealias Data = Row.Element
     typealias ContentForData = (Data) -> CellContent
@@ -64,7 +64,7 @@ struct CollectionView<Collections, CellContent>: UIViewControllerRepresentable w
     }
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(view: self)
+        return Coordinator(view: self)
     }
 
     func makeUIViewController(context: Context) -> ViewController {
@@ -79,7 +79,7 @@ struct CollectionView<Collections, CellContent>: UIViewControllerRepresentable w
     func updateUIViewController(_ uiViewController: ViewController, context: Context) {
         context.coordinator.view = self
         uiViewController.layout.scrollDirection = self.scrollDirection
-        if case let .fixed(size) = self.contentSize {
+        if case .fixed(let size) = self.contentSize {
             uiViewController.layout.itemSize = size
         }
         uiViewController.layout.minimumLineSpacing = self.itemSpacing.mainAxisSpacing
@@ -121,7 +121,7 @@ extension CollectionView {
         init(coordinator: Coordinator, scrollDirection: ScrollDirection) {
             let layout = CollectionViewCarouselLayout()
             layout.scrollDirection = scrollDirection
-            if case let .fixed(size) = coordinator.view.contentSize {
+            if case .fixed(let size) = coordinator.view.contentSize {
                 layout.itemSize = size
             }
 
@@ -158,11 +158,11 @@ extension CollectionView {
         }
 
         func numberOfSections(in collectionView: UICollectionView) -> Int {
-            self.view.collections.count
+            return self.view.collections.count
         }
 
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            self.view.collections[section].count
+            return self.view.collections[section].count
         }
 
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -192,32 +192,32 @@ extension CollectionView {
 
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             switch self.view.contentSize {
-            case let .fixed(size):
-                return size
-            case let .variable(sizeForData):
-                let data = self.view.collections[indexPath.section][indexPath.item]
-                return sizeForData(data)
-            case let .crossAxisFilled(mainAxisLength):
-                switch self.view.scrollDirection {
-                case .horizontal:
-                    return CGSize(width: mainAxisLength, height: collectionView.bounds.height)
-                case .vertical:
-                    fallthrough
-                @unknown default:
-                    return CGSize(width: collectionView.bounds.width, height: mainAxisLength)
-                }
-            case let .custom(customSizeForData):
-                let data = self.view.collections[indexPath.section][indexPath.item]
-                return customSizeForData(collectionView, collectionViewLayout, data)
+                case .fixed(let size):
+                    return size
+                case .variable(let sizeForData):
+                    let data = self.view.collections[indexPath.section][indexPath.item]
+                    return sizeForData(data)
+                case .crossAxisFilled(let mainAxisLength):
+                    switch self.view.scrollDirection {
+                        case .horizontal:
+                            return CGSize(width: mainAxisLength, height: collectionView.bounds.height)
+                        case .vertical:
+                            fallthrough
+                        @unknown default:
+                            return CGSize(width: collectionView.bounds.width, height: mainAxisLength)
+                    }
+                case .custom(let customSizeForData):
+                    let data = self.view.collections[indexPath.section][indexPath.item]
+                    return customSizeForData(collectionView, collectionViewLayout, data)
             }
         }
 
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            self.view.itemSpacing.mainAxisSpacing
+            return self.view.itemSpacing.mainAxisSpacing
         }
 
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            self.view.itemSpacing.crossAxisSpacing
+            return self.view.itemSpacing.crossAxisSpacing
         }
 
         func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -245,11 +245,12 @@ struct DemoCell: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.blue.cornerRadius(14))
+
     }
 }
 
 struct CollectionViewDemoView: View {
-    @State var items = (0 ... 30).map { DemoData(id: "\($0)") }
+    @State var items = (0...30).map({ DemoData(id: "\($0)") })
     @State var selectedIndex: Int = 0
 
     var body: some View {

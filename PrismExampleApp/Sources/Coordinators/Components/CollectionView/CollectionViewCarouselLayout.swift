@@ -24,7 +24,7 @@ class CollectionViewCarouselLayout: UICollectionViewFlowLayout {
         var direction: UICollectionView.ScrollDirection
 
         func isEqual(_ otherState: LayoutState) -> Bool {
-            self.size.equalTo(otherState.size) && self.direction == otherState.direction
+            return self.size.equalTo(otherState.size) && self.direction == otherState.direction
         }
     }
 
@@ -34,12 +34,12 @@ class CollectionViewCarouselLayout: UICollectionViewFlowLayout {
 
     var pageWidth: CGFloat {
         switch self.scrollDirection {
-        case .horizontal:
-            return self.itemSize.width + self.minimumLineSpacing
-        case .vertical:
-            return self.itemSize.height + self.minimumLineSpacing
-        @unknown default:
-            return self.itemSize.width + self.minimumLineSpacing
+            case .horizontal:
+                return self.itemSize.width + self.minimumLineSpacing
+            case .vertical:
+                return self.itemSize.height + self.minimumLineSpacing
+            @unknown default:
+                return self.itemSize.width + self.minimumLineSpacing
         }
     }
 
@@ -51,7 +51,7 @@ class CollectionViewCarouselLayout: UICollectionViewFlowLayout {
     }
 
     var currentCenteredPage: Int? {
-        self.currentCenteredIndexPath?.row
+        return self.currentCenteredIndexPath?.row
     }
 
     override init() {
@@ -75,21 +75,19 @@ class CollectionViewCarouselLayout: UICollectionViewFlowLayout {
     }
 
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        true
+        return true
     }
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        guard
-            let superAttributes = super.layoutAttributesForElements(in: rect),
-            let attributes = NSArray(array: superAttributes, copyItems: true) as? [UICollectionViewLayoutAttributes]
+        guard let superAttributes = super.layoutAttributesForElements(in: rect),
+              let attributes = NSArray(array: superAttributes, copyItems: true) as? [UICollectionViewLayoutAttributes]
         else { return nil }
-        return attributes.map { self.transformLayoutAttributes($0) }
+        return attributes.map({ self.transformLayoutAttributes($0) })
     }
 
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-        guard
-            let collectionView = collectionView, !collectionView.isPagingEnabled,
-            let layoutAttributes = self.layoutAttributesForElements(in: collectionView.bounds)
+        guard let collectionView = collectionView, !collectionView.isPagingEnabled,
+              let layoutAttributes = self.layoutAttributesForElements(in: collectionView.bounds)
         else { return super.targetContentOffset(forProposedContentOffset: proposedContentOffset) }
 
         let isHorizontal = (self.scrollDirection == .horizontal)
@@ -116,16 +114,16 @@ class CollectionViewCarouselLayout: UICollectionViewFlowLayout {
         let shouldAnimate: Bool
 
         switch scrollDirection {
-        case .horizontal:
-            let pageOffset = CGFloat(index) * self.pageWidth - collectionView.contentInset.left
-            proposedContentOffset = CGPoint(x: pageOffset, y: collectionView.contentOffset.y)
-            shouldAnimate = abs(collectionView.contentOffset.x - pageOffset) > 1 ? animated : false
-        case .vertical:
-            let pageOffset = CGFloat(index) * self.pageWidth - collectionView.contentInset.top
-            proposedContentOffset = CGPoint(x: collectionView.contentOffset.x, y: pageOffset)
-            shouldAnimate = abs(collectionView.contentOffset.y - pageOffset) > 1 ? animated : false
-        @unknown default:
-            fatalError()
+            case .horizontal:
+                let pageOffset = CGFloat(index) * self.pageWidth - collectionView.contentInset.left
+                proposedContentOffset = CGPoint(x: pageOffset, y: collectionView.contentOffset.y)
+                shouldAnimate = abs(collectionView.contentOffset.x - pageOffset) > 1 ? animated : false
+            case .vertical:
+                let pageOffset = CGFloat(index) * self.pageWidth - collectionView.contentInset.top
+                proposedContentOffset = CGPoint(x: collectionView.contentOffset.x, y: pageOffset)
+                shouldAnimate = abs(collectionView.contentOffset.y - pageOffset) > 1 ? animated : false
+            @unknown default:
+                fatalError()
         }
         collectionView.setContentOffset(proposedContentOffset, animated: shouldAnimate)
     }
@@ -147,26 +145,26 @@ extension CollectionViewCarouselLayout {
 
         let yInset = (collectionSize.height - self.itemSize.height) / 2
         let xInset = (collectionSize.width - self.itemSize.width) / 2
-        self.sectionInset = UIEdgeInsets(top: yInset, left: xInset, bottom: yInset, right: xInset)
+        self.sectionInset = UIEdgeInsets.init(top: yInset, left: xInset, bottom: yInset, right: xInset)
 
         let side = isHorizontal ? self.itemSize.width : self.itemSize.height
         var scale: CGFloat = 1.0
         switch self.animationMode {
-        case let .scale(sideItemScale, _, _):
-            scale = sideItemScale
+            case .scale(let sideItemScale, _, _):
+                scale = sideItemScale
 
-        default:
-            break
+            default:
+                break
         }
-        let scaledItemOffset = (side - side * scale) / 2
+        let scaledItemOffset =  (side - side * scale) / 2
 
         switch self.spacingMode {
-        case let .fixed(spacing):
-            self.minimumLineSpacing = spacing - scaledItemOffset
-        case let .overlap(visibleOffset):
-            let fullSizeSideItemOverlap = visibleOffset + scaledItemOffset
-            let inset = isHorizontal ? xInset : yInset
-            self.minimumLineSpacing = inset - fullSizeSideItemOverlap
+            case .fixed(let spacing):
+                self.minimumLineSpacing = spacing - scaledItemOffset
+            case .overlap(let visibleOffset):
+                let fullSizeSideItemOverlap = visibleOffset + scaledItemOffset
+                let inset = isHorizontal ? xInset : yInset
+                self.minimumLineSpacing = inset - fullSizeSideItemOverlap
         }
     }
 
@@ -175,7 +173,7 @@ extension CollectionViewCarouselLayout {
 
         let isHorizontal = (self.scrollDirection == .horizontal)
 
-        let collectionCenter: CGFloat = isHorizontal ? collectionView.frame.size.width / 2 : collectionView.frame.size.height / 2
+        let collectionCenter: CGFloat = isHorizontal ? collectionView.frame.size.width/2 : collectionView.frame.size.height/2
 
         let offset = isHorizontal ? collectionView.contentOffset.x : collectionView.contentOffset.y
 
@@ -183,36 +181,36 @@ extension CollectionViewCarouselLayout {
 
         let maxDistance = (isHorizontal ? self.itemSize.width : self.itemSize.height) + self.minimumLineSpacing
         let distance = min(abs(collectionCenter - normalizedCenter), maxDistance)
-        let ratio = (maxDistance - distance) / maxDistance
+        let ratio = (maxDistance - distance)/maxDistance
         var sideItemShift: CGFloat = 0.0
 
         switch self.animationMode {
-        case let .rotation(sideItemAngle, sideItemAlpha, shift):
-            sideItemShift = shift
-            let alpha = ratio * (1 - sideItemAlpha) + sideItemAlpha
-            attributes.alpha = alpha
-            var offsetX = (collectionCenter + offset) - (normalizedCenter + offset)
-            if offsetX < 0 {
-                offsetX *= -1
-            }
-            if offsetX > 0 {
-                let offsetPercentage = offsetX / (collectionCenter * 2)
-                let rotation = (1 - offsetPercentage) - sideItemAngle
-                attributes.transform = CGAffineTransform(rotationAngle: rotation)
-            }
-        case let .scale(sideItemScale, sideItemAlpha, shift):
-            sideItemShift = shift
+            case .rotation(let sideItemAngle, let sideItemAlpha, let shift):
+                sideItemShift = shift
+                let alpha = ratio * (1 - sideItemAlpha) + sideItemAlpha
+                attributes.alpha = alpha
+                var offsetX =  (collectionCenter + offset) - (normalizedCenter + offset)
+                if offsetX < 0 {
+                    offsetX *= -1
+                }
+                if offsetX > 0 {
+                    let offsetPercentage = offsetX / (collectionCenter * 2)
+                    let rotation = (1 - offsetPercentage) - sideItemAngle
+                    attributes.transform = CGAffineTransform(rotationAngle: rotation)
+                }
+            case .scale(let sideItemScale, let sideItemAlpha, let shift):
+                sideItemShift = shift
 
-            let alpha = ratio * (1 - sideItemAlpha) + sideItemAlpha
-            let scale = ratio * (1 - sideItemScale) + sideItemScale
-            attributes.alpha = alpha
-            attributes.transform3D = CATransform3DScale(CATransform3DIdentity, scale, scale, 1)
-            // If side Item alpha 1 then manage zindex based on a scale
-            if sideItemAlpha == 1 {
-                attributes.zIndex = Int(scale * 10)
-            } else {
-                attributes.zIndex = Int(alpha * 10)
-            }
+                let alpha = ratio * (1 - sideItemAlpha) + sideItemAlpha
+                let scale = ratio * (1 - sideItemScale) + sideItemScale
+                attributes.alpha = alpha
+                attributes.transform3D = CATransform3DScale(CATransform3DIdentity, scale, scale, 1)
+                // If side Item alpha 1 then manage zindex based on a scale
+                if sideItemAlpha == 1 {
+                    attributes.zIndex = Int(scale * 10)
+                } else {
+                    attributes.zIndex = Int(alpha * 10)
+                }
         }
         let shift = (1 - ratio) * sideItemShift
 

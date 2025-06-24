@@ -10,8 +10,11 @@ import PrismSDK
 import SwiftUI
 
 struct ScansView: View {
-    @Preference(\.onboardingComplete) private var onboardingComplete: Bool
 
+    @Preference(\.onboardingComplete) private var onboardingComplete: Bool
+    @Preference(\.agreedToTerms) private var agreedToTerms: Bool
+    
+    @State private var showTermsAndConditions: Bool = false
     @State private var showOnboarding: Bool = false
     @State private var showNewScan: Bool = false
 
@@ -21,15 +24,24 @@ struct ScansView: View {
         }
         .onAppear {
             self.showOnboarding = !self.onboardingComplete
+            self.showTermsAndConditions = self.onboardingComplete && !self.agreedToTerms
         }
-        .onChange(of: self.onboardingComplete) { newValue in
-            guard !newValue else { return }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.showOnboarding = true
+        .onChange(of: self.onboardingComplete) { isOnboardingCompleted in 
+            if isOnboardingCompleted {
+                self.showTermsAndConditions = self.onboardingComplete && !self.agreedToTerms
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.showNewScan = false
+                    self.showOnboarding = true
+                    self.showTermsAndConditions = false
+                }
             }
         }
         .fullScreenCover(isPresented: self.$showOnboarding) {
             OnboardingProfileView(isPresented: self.$showOnboarding)
+        }
+        .fullScreenCover(isPresented: self.$showTermsAndConditions) {
+            TermsAndConditionsView(isPresented: self.$showTermsAndConditions)
         }
         .fullScreenCover(isPresented: self.$showNewScan) {
             NewScanView(isPresented: self.$showNewScan)

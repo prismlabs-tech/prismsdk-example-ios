@@ -6,13 +6,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import Combine
 import Foundation
+import Combine
 import PrismSDK
 
 class CaptureManager: ObservableObject {
+    
     static let preview: CaptureManager = {
-        CaptureManager(apiClient: ApiClient.preview)
+        return CaptureManager(apiClient: ApiClient.preview)
     }()
 
     @Preference(\.agreedToSharingData) private var agreedToSharingData: Bool
@@ -24,13 +25,13 @@ class CaptureManager: ObservableObject {
     @Preference(\.userWeight) private var userWeight: Int
 
     let apiClient: ApiClient
-
+    
     init(apiClient: ApiClient) {
         self.apiClient = apiClient
     }
 
     func createScan(with file: URL) async throws {
-        let _ = try await UserClient(client: self.apiClient)
+        _ = try await UserClient(client: self.apiClient)
             .update(
                 user: .init(
                     token: self.userEmail.lowercased(),

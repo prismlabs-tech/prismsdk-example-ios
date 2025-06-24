@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ScanSection: Identifiable {
-    var id: UUID = .init()
+    var id: UUID = UUID()
     let title: LocalizedStringKey
     let items: [ScanItem]
 }
@@ -33,6 +33,8 @@ enum ScanItemType: String, CaseIterable, Identifiable {
     case leanMassPercentage
     case fatMass
     case leanMass
+    case vatMass
+    case vatPercentage
     case weight
     case bodyFat
 
@@ -76,61 +78,65 @@ enum ScanItemType: String, CaseIterable, Identifiable {
 
 extension ScanItemType {
     var name: LocalizedStringKey {
-        LocalizedStringKey(stringLiteral: "BodyScanType.\(self.rawValue)")
+        return LocalizedStringKey(stringLiteral: "BodyScanType.\(self.rawValue)")
     }
 }
 
 extension ScanItemType {
     func format(_ value: Double) -> (measurement: String, unit: String) {
+        // If the input value is negative, it is considered that the
+        // fetched value does not exist or is invalid
+        guard value > 0.0 else { return ("--", "") }
+        
         switch self {
-        case .fatMass, .leanMass:
-            let kilos = Measurement(value: value, unit: UnitMass.kilograms)
-            let formatter = MeasurementFormatter()
-            formatter.locale = Locale(identifier: "en_US_POSIX")
-            formatter.unitStyle = .medium
-            formatter.unitOptions = .naturalScale
-            formatter.numberFormatter.minimumFractionDigits = 1
-            formatter.numberFormatter.maximumFractionDigits = 1
-            return formatter.components(for: kilos)
+            case .fatMass, .leanMass, .vatMass:
+                let kilos = Measurement(value: value, unit: UnitMass.kilograms)
+                let formatter = MeasurementFormatter()
+                formatter.locale = Locale(identifier: "en_US_POSIX")
+                formatter.unitStyle = .medium
+                formatter.unitOptions = .naturalScale
+                formatter.numberFormatter.minimumFractionDigits = 1
+                formatter.numberFormatter.maximumFractionDigits = 1
+                return formatter.components(for: kilos)
 
-        case .weight:
-            let kilos = Measurement(value: value, unit: UnitMass.kilograms)
-            let formatter = MeasurementFormatter()
-            formatter.locale = Locale(identifier: "en_US_POSIX")
-            formatter.unitStyle = .medium
-            formatter.unitOptions = .naturalScale
-            formatter.numberFormatter.minimumFractionDigits = 1
-            formatter.numberFormatter.maximumFractionDigits = 1
-            return formatter.components(for: kilos)
+            case .weight:
+                let kilos = Measurement(value: value, unit: UnitMass.kilograms)
+                let formatter = MeasurementFormatter()
+                formatter.locale = Locale(identifier: "en_US_POSIX")
+                formatter.unitStyle = .medium
+                formatter.unitOptions = .naturalScale
+                formatter.numberFormatter.minimumFractionDigits = 1
+                formatter.numberFormatter.maximumFractionDigits = 1
+                return formatter.components(for: kilos)
 
-        case .fatMassPercentage, .leanMassPercentage, .bodyFat:
-            let formatter = NumberFormatter()
-            formatter.locale = Locale(identifier: "en_US_POSIX")
-            formatter.numberStyle = .percent
-            formatter.minimumFractionDigits = 1
-            formatter.maximumFractionDigits = 1
-            let formatted = String(formatter.string(from: NSNumber(value: value / 100.0))?.dropLast(1) ?? "--")
-            return (formatted, "%")
+            case .fatMassPercentage, .leanMassPercentage, .vatPercentage, .bodyFat:
+                let formatter = NumberFormatter()
+                formatter.locale = Locale(identifier: "en_US_POSIX")
+                formatter.numberStyle = .percent
+                formatter.minimumFractionDigits = 1
+                formatter.maximumFractionDigits = 1
+                let formatted = String(formatter.string(from: NSNumber(value: value / 100.0))?.dropLast(1) ?? "--")
+                return (formatted, "%")
 
-        case .waistToHip:
-            let formatter = NumberFormatter()
-            formatter.locale = Locale(identifier: "en_US_POSIX")
-            formatter.numberStyle = .decimal
-            formatter.minimumFractionDigits = 1
-            formatter.maximumFractionDigits = 2
-            let formatted = String(formatter.string(from: NSNumber(value: value)) ?? "--")
-            return (formatted, "")
+            case .waistToHip:
+                let formatter = NumberFormatter()
+                formatter.locale = Locale(identifier: "en_US_POSIX")
+                formatter.numberStyle = .decimal
+                formatter.minimumFractionDigits = 1
+                formatter.maximumFractionDigits = 2
+                let formatted = String(formatter.string(from: NSNumber(value: value)) ?? "--")
+                return (formatted, "")
 
-        default:
-            let meters = Measurement(value: value, unit: UnitLength.meters)
-            let formatter = MeasurementFormatter()
-            formatter.locale = Locale(identifier: "en_US_POSIX")
-            formatter.unitStyle = .medium
-            formatter.unitOptions = .naturalScale
-            formatter.numberFormatter.roundingMode = .halfUp
-            formatter.numberFormatter.minimumFractionDigits = 1
-            formatter.numberFormatter.maximumFractionDigits = 1
-            return formatter.components(for: meters)
+            default:
+                let meters = Measurement(value: value, unit: UnitLength.meters)
+                let formatter = MeasurementFormatter()
+                formatter.locale = Locale(identifier: "en_US_POSIX")
+                formatter.unitStyle = .medium
+                formatter.unitOptions = .naturalScale
+                formatter.numberFormatter.roundingMode = .halfUp
+                formatter.numberFormatter.minimumFractionDigits = 1
+                formatter.numberFormatter.maximumFractionDigits = 1
+                return formatter.components(for: meters)
         }
     }
 }

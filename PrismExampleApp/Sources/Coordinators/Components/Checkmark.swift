@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 struct Checkmark: View {
     @Environment(\.prismThemeConfiguration) var theme: PrismThemeConfiguration

@@ -17,10 +17,6 @@
 		1520323E2B27227600B39FC8 /* ScanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152031CF2B27227600B39FC8 /* ScanManager.swift */; };
 		1520323F2B27227600B39FC8 /* RecordingUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152031D02B27227600B39FC8 /* RecordingUploader.swift */; };
 		152032422B27227600B39FC8 /* CaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152031D42B27227600B39FC8 /* CaptureManager.swift */; };
-		152032442B27227600B39FC8 /* NewScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152031D92B27227600B39FC8 /* NewScanView.swift */; };
-		152032452B27227600B39FC8 /* NewScanCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152031DB2B27227600B39FC8 /* NewScanCardView.swift */; };
-		152032462B27227600B39FC8 /* NewScanChecklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152031DC2B27227600B39FC8 /* NewScanChecklist.swift */; };
-		152032472B27227600B39FC8 /* NewScanWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152031DD2B27227600B39FC8 /* NewScanWeightView.swift */; };
 		152032482B27227600B39FC8 /* ScanMetricsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152031E12B27227600B39FC8 /* ScanMetricsListView.swift */; };
 		152032492B27227600B39FC8 /* ScanItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152031E22B27227600B39FC8 /* ScanItemView.swift */; };
 		1520324A2B27227600B39FC8 /* ScanListSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152031E42B27227600B39FC8 /* ScanListSectionView.swift */; };
@@ -98,11 +94,15 @@
 		3D01D8F62DC9FA92005E06F2 /* SwipeCell in Frameworks */ = {isa = PBXBuildFile; productRef = 3D01D8F52DC9FA92005E06F2 /* SwipeCell */; };
 		3D5736542C369AFB00654ED1 /* BodyfatMethod+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736522C369AFB00654ED1 /* BodyfatMethod+Localization.swift */; };
 		3D5736552C369AFB00654ED1 /* AssetsConfigId+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736532C369AFB00654ED1 /* AssetsConfigId+Localization.swift */; };
-		3D5736592C369B4A00654ED1 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5736582C369B4A00654ED1 /* InfoButton.swift */; };
-		3D85024D2C89A7F7003A5298 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 3D85024C2C89A7F7003A5298 /* BetterSafariView */; };
 		3DA3D3692C66116D0045016D /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D3682C66116D0045016D /* HealthKitManager.swift */; };
 		3DA3D36C2C6611760045016D /* Height+HealthKitUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D36A2C6611760045016D /* Height+HealthKitUnits.swift */; };
 		3DA3D36D2C6611760045016D /* Weight+HealthKitUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D36B2C6611760045016D /* Weight+HealthKitUnits.swift */; };
+		3DAD20242E0A8C2300A3EE2B /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAD20232E0A8C2300A3EE2B /* InfoButton.swift */; };
+		3DAD202C2E0A8C9B00A3EE2B /* NewScanChecklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAD20252E0A8C9B00A3EE2B /* NewScanChecklist.swift */; };
+		3DAD202D2E0A8C9B00A3EE2B /* ScanCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAD20272E0A8C9B00A3EE2B /* ScanCardView.swift */; };
+		3DAD202E2E0A8C9B00A3EE2B /* NewScanWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAD20262E0A8C9B00A3EE2B /* NewScanWeightView.swift */; };
+		3DAD20302E0A8D3700A3EE2B /* NewScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAD202F2E0A8D3700A3EE2B /* NewScanView.swift */; };
+		3DAD20322E0A8E3D00A3EE2B /* ScanPreviewToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAD20312E0A8E3D00A3EE2B /* ScanPreviewToggle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,10 +117,6 @@
 		152031CF2B27227600B39FC8 /* ScanManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanManager.swift; sourceTree = "<group>"; };
 		152031D02B27227600B39FC8 /* RecordingUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingUploader.swift; sourceTree = "<group>"; };
 		152031D42B27227600B39FC8 /* CaptureManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureManager.swift; sourceTree = "<group>"; };
-		152031D92B27227600B39FC8 /* NewScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScanView.swift; sourceTree = "<group>"; };
-		152031DB2B27227600B39FC8 /* NewScanCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScanCardView.swift; sourceTree = "<group>"; };
-		152031DC2B27227600B39FC8 /* NewScanChecklist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScanChecklist.swift; sourceTree = "<group>"; };
-		152031DD2B27227600B39FC8 /* NewScanWeightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScanWeightView.swift; sourceTree = "<group>"; };
 		152031E12B27227600B39FC8 /* ScanMetricsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanMetricsListView.swift; sourceTree = "<group>"; };
 		152031E22B27227600B39FC8 /* ScanItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanItemView.swift; sourceTree = "<group>"; };
 		152031E42B27227600B39FC8 /* ScanListSectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanListSectionView.swift; sourceTree = "<group>"; };
@@ -196,11 +192,16 @@
 		3D01D8F22DC9F9B1005E06F2 /* TermsConsentCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsConsentCheckbox.swift; sourceTree = "<group>"; };
 		3D5736522C369AFB00654ED1 /* BodyfatMethod+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BodyfatMethod+Localization.swift"; sourceTree = "<group>"; };
 		3D5736532C369AFB00654ED1 /* AssetsConfigId+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AssetsConfigId+Localization.swift"; sourceTree = "<group>"; };
-		3D5736582C369B4A00654ED1 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		3DA3D3672C6609540045016D /* PrismExampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrismExampleApp.entitlements; sourceTree = "<group>"; };
 		3DA3D3682C66116D0045016D /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		3DA3D36A2C6611760045016D /* Height+HealthKitUnits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Height+HealthKitUnits.swift"; sourceTree = "<group>"; };
 		3DA3D36B2C6611760045016D /* Weight+HealthKitUnits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Weight+HealthKitUnits.swift"; sourceTree = "<group>"; };
+		3DAD20232E0A8C2300A3EE2B /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
+		3DAD20252E0A8C9B00A3EE2B /* NewScanChecklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScanChecklist.swift; sourceTree = "<group>"; };
+		3DAD20262E0A8C9B00A3EE2B /* NewScanWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScanWeightView.swift; sourceTree = "<group>"; };
+		3DAD20272E0A8C9B00A3EE2B /* ScanCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCardView.swift; sourceTree = "<group>"; };
+		3DAD202F2E0A8D3700A3EE2B /* NewScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScanView.swift; sourceTree = "<group>"; };
+		3DAD20312E0A8E3D00A3EE2B /* ScanPreviewToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPreviewToggle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +210,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				156F7D402B7BCD4900961D29 /* PrismSDK in Frameworks */,
-				3D85024D2C89A7F7003A5298 /* BetterSafariView in Frameworks */,
 				3D01D8F62DC9FA92005E06F2 /* SwipeCell in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,30 +297,11 @@
 		152031D72B27227600B39FC8 /* ScanScreen */ = {
 			isa = PBXGroup;
 			children = (
-				152031D82B27227600B39FC8 /* NewScan */,
+				3DAD202A2E0A8C9B00A3EE2B /* NewScan */,
 				152031DE2B27227600B39FC8 /* Scans */,
 				152031F12B27227600B39FC8 /* HowTo */,
 			);
 			path = ScanScreen;
-			sourceTree = "<group>";
-		};
-		152031D82B27227600B39FC8 /* NewScan */ = {
-			isa = PBXGroup;
-			children = (
-				152031D92B27227600B39FC8 /* NewScanView.swift */,
-				152031DA2B27227600B39FC8 /* New Scan Card */,
-			);
-			path = NewScan;
-			sourceTree = "<group>";
-		};
-		152031DA2B27227600B39FC8 /* New Scan Card */ = {
-			isa = PBXGroup;
-			children = (
-				152031DB2B27227600B39FC8 /* NewScanCardView.swift */,
-				152031DC2B27227600B39FC8 /* NewScanChecklist.swift */,
-				152031DD2B27227600B39FC8 /* NewScanWeightView.swift */,
-			);
-			path = "New Scan Card";
 			sourceTree = "<group>";
 		};
 		152031DE2B27227600B39FC8 /* Scans */ = {
@@ -441,7 +422,8 @@
 		152032072B27227600B39FC8 /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
-				3D5736582C369B4A00654ED1 /* InfoButton.swift */,
+				3DAD20312E0A8E3D00A3EE2B /* ScanPreviewToggle.swift */,
+				3DAD20232E0A8C2300A3EE2B /* InfoButton.swift */,
 				152032082B27227600B39FC8 /* Weight */,
 				1520320C2B27227600B39FC8 /* ProfileView.swift */,
 				1520320D2B27227600B39FC8 /* Sex */,
@@ -614,6 +596,25 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		3DAD20282E0A8C9B00A3EE2B /* ScanCard */ = {
+			isa = PBXGroup;
+			children = (
+				3DAD20252E0A8C9B00A3EE2B /* NewScanChecklist.swift */,
+				3DAD20262E0A8C9B00A3EE2B /* NewScanWeightView.swift */,
+				3DAD20272E0A8C9B00A3EE2B /* ScanCardView.swift */,
+			);
+			path = ScanCard;
+			sourceTree = "<group>";
+		};
+		3DAD202A2E0A8C9B00A3EE2B /* NewScan */ = {
+			isa = PBXGroup;
+			children = (
+				3DAD202F2E0A8D3700A3EE2B /* NewScanView.swift */,
+				3DAD20282E0A8C9B00A3EE2B /* ScanCard */,
+			);
+			path = NewScan;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -632,7 +633,6 @@
 			name = PrismExampleApp;
 			packageProductDependencies = (
 				156F7D3F2B7BCD4900961D29 /* PrismSDK */,
-				3D85024C2C89A7F7003A5298 /* BetterSafariView */,
 				3D01D8F52DC9FA92005E06F2 /* SwipeCell */,
 			);
 			productName = PrismReference;
@@ -665,7 +665,6 @@
 			mainGroup = 152031A82B27224C00B39FC8;
 			packageReferences = (
 				156F7D3E2B7BCD4900961D29 /* XCRemoteSwiftPackageReference "prismsdk-ios" */,
-				3D85024B2C89A7F7003A5298 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
 				3D01D8F42DC9FA92005E06F2 /* XCRemoteSwiftPackageReference "SwipeCell" */,
 			);
 			productRefGroup = 152031B22B27224C00B39FC8 /* Products */;
@@ -707,8 +706,8 @@
 				152032522B27227600B39FC8 /* ScanListItemContent.swift in Sources */,
 				1520326A2B27227600B39FC8 /* ProfileSexSection.swift in Sources */,
 				152032682B27227600B39FC8 /* ProfileWeightSection.swift in Sources */,
-				152032442B27227600B39FC8 /* NewScanView.swift in Sources */,
 				1520327A2B27227600B39FC8 /* Scan+Groups.swift in Sources */,
+				3DAD20242E0A8C2300A3EE2B /* InfoButton.swift in Sources */,
 				3DA3D36C2C6611760045016D /* Height+HealthKitUnits.swift in Sources */,
 				1520324B2B27227600B39FC8 /* ScanDetailsGridView.swift in Sources */,
 				1520325C2B27227600B39FC8 /* LearnMoreButton.swift in Sources */,
@@ -716,8 +715,8 @@
 				1520327F2B27227600B39FC8 /* Array+KeyPath.swift in Sources */,
 				152032602B27227600B39FC8 /* Checkmark.swift in Sources */,
 				152032622B27227600B39FC8 /* ScanStatusView.swift in Sources */,
-				3D5736592C369B4A00654ED1 /* InfoButton.swift in Sources */,
 				1520324F2B27227600B39FC8 /* PrismSceneView.swift in Sources */,
+				3DAD20322E0A8E3D00A3EE2B /* ScanPreviewToggle.swift in Sources */,
 				1520326D2B27227600B39FC8 /* ProfileHeightSection.swift in Sources */,
 				1520323B2B27227600B39FC8 /* Sorting.swift in Sources */,
 				1520327E2B27227600B39FC8 /* Environment+Previewing.swift in Sources */,
@@ -725,19 +724,21 @@
 				152032882B27227600B39FC8 /* PrismCache.swift in Sources */,
 				152032742B27227600B39FC8 /* ProfileSex.swift in Sources */,
 				1520325B2B27227600B39FC8 /* HostedCollectionViewCell.swift in Sources */,
+				3DAD202C2E0A8C9B00A3EE2B /* NewScanChecklist.swift in Sources */,
+				3DAD202D2E0A8C9B00A3EE2B /* ScanCardView.swift in Sources */,
+				3DAD202E2E0A8C9B00A3EE2B /* NewScanWeightView.swift in Sources */,
 				152032562B27227600B39FC8 /* HowToView.swift in Sources */,
 				3DA3D3692C66116D0045016D /* HealthKitManager.swift in Sources */,
 				152032702B27227600B39FC8 /* AgePicker.swift in Sources */,
 				152032492B27227600B39FC8 /* ScanItemView.swift in Sources */,
+				3DAD20302E0A8D3700A3EE2B /* NewScanView.swift in Sources */,
 				1520326B2B27227600B39FC8 /* ProfileSexPicker.swift in Sources */,
 				152032852B27227600B39FC8 /* View+RoundCorners.swift in Sources */,
 				1520326F2B27227600B39FC8 /* ProfileHeightContent.swift in Sources */,
 				1520324D2B27227600B39FC8 /* ScanDetailsView.swift in Sources */,
 				1520325D2B27227600B39FC8 /* FAQList.swift in Sources */,
-				152032472B27227600B39FC8 /* NewScanWeightView.swift in Sources */,
 				152032732B27227600B39FC8 /* ProfileEmailSection.swift in Sources */,
 				152032502B27227600B39FC8 /* ScansListView.swift in Sources */,
-				152032452B27227600B39FC8 /* NewScanCardView.swift in Sources */,
 				1520327B2B27227600B39FC8 /* ScanStatus+Localization.swift in Sources */,
 				152032572B27227600B39FC8 /* HowToSteps.swift in Sources */,
 				152032482B27227600B39FC8 /* ScanMetricsListView.swift in Sources */,
@@ -751,7 +752,6 @@
 				152032752B27227600B39FC8 /* OnboardingProfileView.swift in Sources */,
 				152032382B27227600B39FC8 /* Preference.swift in Sources */,
 				3D01D8F32DC9F9B1005E06F2 /* TermsConsentCheckbox.swift in Sources */,
-				152032462B27227600B39FC8 /* NewScanChecklist.swift in Sources */,
 				152032862B27227600B39FC8 /* Formatters.swift in Sources */,
 				1520325A2B27227600B39FC8 /* CollectionViewCarouselLayout.swift in Sources */,
 				152032532B27227600B39FC8 /* ScanListItemView.swift in Sources */,
@@ -1040,14 +1040,6 @@
 				minimumVersion = 0.9.8;
 			};
 		};
-		3D85024B2C89A7F7003A5298 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1060,11 +1052,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3D01D8F42DC9FA92005E06F2 /* XCRemoteSwiftPackageReference "SwipeCell" */;
 			productName = SwipeCell;
-		};
-		3D85024C2C89A7F7003A5298 /* BetterSafariView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3D85024B2C89A7F7003A5298 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
-			productName = BetterSafariView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

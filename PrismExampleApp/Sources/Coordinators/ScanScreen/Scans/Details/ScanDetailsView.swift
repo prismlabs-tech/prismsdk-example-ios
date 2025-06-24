@@ -92,7 +92,8 @@ struct ScanDetailsView: View {
     }
 }
 
-struct ScanDetailsView_Previews: PreviewProvider {
+ #if DEBUG
+ struct ScanDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ScanDetailsView(scan: .processingPreview)
@@ -101,4 +102,5 @@ struct ScanDetailsView_Previews: PreviewProvider {
         .environmentObject(ScanManager.preview)
         .environmentObject(PrismCache())
     }
-}
+ }
+ #endif

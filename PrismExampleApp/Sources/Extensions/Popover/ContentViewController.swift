@@ -16,8 +16,7 @@ class ContentViewController<V>: UIHostingController<V>, UIPopoverPresentationCon
         super.init(rootView: rootView)
     }
 
-    @MainActor @objc
-    dynamic required init?(coder aDecoder: NSCoder) {
+    @MainActor @objc required dynamic init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -29,7 +28,7 @@ class ContentViewController<V>: UIHostingController<V>, UIPopoverPresentationCon
     }
 
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        .none
+        return .none
     }
 
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {

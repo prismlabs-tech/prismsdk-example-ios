@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 struct ScanListItemView: View {
     let scan: Scan
@@ -16,14 +16,12 @@ struct ScanListItemView: View {
         Card {
             switch self.scan.status {
             case .created, .processing, .failed:
-                ScanListItemProcessing(scan: self.scan)
+                    ScanListItemProcessing(scan: self.scan)
             case .ready:
                 NavigationLink(
                     destination: ScanDetailsView(scan: self.scan),
                     label: { ScanListItemContent(scan: self.scan) }
                 )
-            @unknown default:
-                fatalError()
             }
         }
     }

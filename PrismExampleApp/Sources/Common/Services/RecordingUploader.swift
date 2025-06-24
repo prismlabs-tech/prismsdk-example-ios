@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import Combine
 import Foundation
+import Combine
 import PrismSDK
 
 extension Notification.Name {
@@ -17,7 +17,7 @@ extension Notification.Name {
 
 class RecordingUploader: ObservableObject {
     static let preview: RecordingUploader = {
-        RecordingUploader(apiClient: ApiClient.preview)
+        return RecordingUploader(apiClient: ApiClient.preview)
     }()
 
     private let client: ScanClient
@@ -81,8 +81,7 @@ class RecordingUploader: ObservableObject {
             })
     }
 
-    @objc
-    func checkUploads() {
+    @objc func checkUploads() {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         guard let contents = try? FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles) else { return }
         guard !contents.isEmpty else { return }
@@ -106,8 +105,7 @@ class RecordingUploader: ObservableObject {
         self.uploader.upload(file: file, to: url)
     }
 
-    @objc
-    func uploadScanNotification(_ notification: Notification) {
+    @objc func uploadScanNotification(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         guard let file = notification.object as? URL else { return }
         guard let id = userInfo["id"] as? String else { return }

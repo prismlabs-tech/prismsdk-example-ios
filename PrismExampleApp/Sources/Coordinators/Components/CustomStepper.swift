@@ -48,6 +48,6 @@ struct CustomStepper: View {
 
 struct CustomStepper_Previews: PreviewProvider {
     static var previews: some View {
-        CustomStepper(value: .constant(10), range: 10 ... 50)
+        CustomStepper(value: .constant(10), range: 10...50)
     }
 }

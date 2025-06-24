@@ -15,6 +15,6 @@ extension ApiClient {
     }
 
     static let shared: ApiClient = {
-        ApiClient(baseURL: nil, clientCredentials: nil)
+        return ApiClient(baseURL: nil, clientCredentials: nil)
     }()
 }

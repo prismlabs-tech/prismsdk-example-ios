@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import Combine
 import Foundation
+import Combine
 import SwiftUI
 
 @propertyWrapper
@@ -21,14 +21,14 @@ struct Preference<Value>: DynamicProperty {
         self.preferences = preferences
         let publisher = preferences
             .preferencesChangedSubject
-            .filter { $0 == keyPath }
-            .map { _ in () }
+            .filter({ $0 == keyPath })
+            .map({ _ in () })
             .eraseToAnyPublisher()
         self.preferencesObserver = .init(publisher: publisher)
     }
 
     var wrappedValue: Value {
-        get { self.preferences[keyPath: self.keyPath] }
+        get { self.preferences[keyPath: keyPath] }
         nonmutating set { self.preferences[keyPath: keyPath] = newValue }
     }
 

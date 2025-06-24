@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct WeightPicker: View {
-    private let weightRange: ClosedRange<Int> = 10 ... 600
+    private let weightRange: ClosedRange<Int> = 10...600
 
     @Preference(\.userWeight) private var weight: Int
 

@@ -1,15 +1,17 @@
-/*
- * Copyright (c) Prismlabs, Inc. and affiliates.
- * All rights reserved.
- *
- * This source code is licensed under the license found in the
- * LICENSE file in the root directory of this source tree.
- */
+//
+//  Copyright (c) Prismlabs, Inc. and affiliates.
+//  All rights reserved.
+//
+//  This source code is licensed under the license found in the
+//  LICENSE file in the root directory of this source tree.
+//
 
 import SwiftUI
 import PrismSDK
 
 struct NewScanView: View {
+    @Preference(\.useScanReview) private var useScanReview: Bool
+    
     @EnvironmentObject private var captureManager: CaptureManager
     @Binding var isPresented: Bool
     @AppStorage("theme") var selectedTheme: ScanTheme = .prism
@@ -22,7 +24,8 @@ struct NewScanView: View {
             self.isPresented = false
         }
         .applyTheme(self.selectedTheme.theme)
-        .environment(\.useScanReview, true)
+        .environment(\.useScanReview, useScanReview)
+        .environment(\.prismTextConfiguration, PrismLocalizableTextConfiguration())
     }
 
     func upload(_ file: URL) {

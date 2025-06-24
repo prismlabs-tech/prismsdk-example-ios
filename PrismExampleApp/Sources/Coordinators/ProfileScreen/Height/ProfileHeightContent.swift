@@ -33,7 +33,7 @@ struct ProfileHeightContent: View {
                     .stroke(Color.prismBase30, lineWidth: 1)
             )
 
-            CustomStepper(value: self.$userHeight, range: 36 ... 107)
+            CustomStepper(value: self.$userHeight, range: 36...107)
                 .padding(.leading, 10.0)
         }
     }

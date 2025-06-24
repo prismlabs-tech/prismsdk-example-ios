@@ -10,7 +10,7 @@ import SwiftUI
 
 extension Binding {
     func withDefault<T>(_ defaultValue: T) -> Binding<T> where Value == T? {
-        Binding<T>(get: {
+        return Binding<T>(get: {
             self.wrappedValue ?? defaultValue
         }, set: { newValue in
             self.wrappedValue = newValue
@@ -76,20 +76,20 @@ struct HorizontalPicker<Option, OptionView>: View where Option: Hashable, Option
 }
 
 /*
- extension HorizontalPicker where Option: StringProtocol, OptionView == Text {
-     init(selectedOption: Binding<Option>, options: [Option]) {
-         self.options = options
-         self._selectedOption = selectedOption
-         self.content = { option in
-             Text(option)
-         }
-     }
- }
- */
+extension HorizontalPicker where Option: StringProtocol, OptionView == Text {
+    init(selectedOption: Binding<Option>, options: [Option]) {
+        self.options = options
+        self._selectedOption = selectedOption
+        self.content = { option in
+            Text(option)
+        }
+    }
+}
+*/
 
 struct HorizontalPickerDemo: View {
     @State var items: [String] = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
-    @State var selectedItem: String? // = "Item 1"
+    @State var selectedItem: String?// = "Item 1"
 
     var body: some View {
         HorizontalPicker(

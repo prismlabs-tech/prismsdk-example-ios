@@ -33,7 +33,7 @@ struct ProfileAgeContent: View {
                 )
             }
 
-            CustomStepper(value: self.$userAge, range: 18 ... 100)
+            CustomStepper(value: self.$userAge, range: 18...100)
                 .padding(.leading, 10.0)
         }
     }

@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 import SwipeCell
 
 struct ScansListView: View {
@@ -169,7 +169,7 @@ struct ScansListView: View {
         .navigationTitle("ScanList.Title")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: self.$presentNewScanCard) {
-            NewScanCardView(isPresented: self.$presentNewScanCard) {
+            ScanCardView(isPresented: self.$presentNewScanCard) {
                 self.presentNewScanCard = false
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
                     self.showNewScan = true

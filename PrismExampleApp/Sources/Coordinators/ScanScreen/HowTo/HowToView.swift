@@ -6,11 +6,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 struct HowToView: View {
-
     @Binding var isPresented: Bool
     let isDoneButton: Bool
 

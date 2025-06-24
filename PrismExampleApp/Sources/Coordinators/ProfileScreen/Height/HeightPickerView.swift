@@ -12,8 +12,8 @@ struct HeightPickerView: UIViewRepresentable {
     typealias Context = UIViewRepresentableContext<Self>
     typealias UIViewType = UIPickerView
 
-    private let feetRange: [Int] = Array(3 ... 8)
-    private let inchesRange: [Int] = Array(0 ... 11)
+    private let feetRange: [Int] = Array(3...8)
+    private let inchesRange: [Int] = Array(0...11)
 
     @Binding var feet: Int
     @Binding var inches: Int
@@ -48,30 +48,30 @@ struct HeightPickerView: UIViewRepresentable {
         }
 
         func numberOfComponents(in pickerView: UIPickerView) -> Int {
-            2
+            return 2
         }
 
         func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
             switch component {
-            case 0: self.parent.feetRange.count
-            case 1: self.parent.inchesRange.count
-            default: 0
+                case 0: return self.parent.feetRange.count
+                case 1: return self.parent.inchesRange.count
+                default: return 0
             }
         }
 
         func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
             switch component {
-            case 0: "\(self.parent.feetRange[row]) feet"
-            case 1: "\(self.parent.inchesRange[row]) inches"
-            default: nil
+                case 0: return "\(self.parent.feetRange[row]) feet"
+                case 1: return "\(self.parent.inchesRange[row]) inches"
+                default: return nil
             }
         }
 
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             switch component {
-            case 0: return self.parent.feet = self.parent.feetRange[row]
-            case 1: return self.parent.inches = self.parent.inchesRange[row]
-            default: break
+                case 0: return self.parent.feet = self.parent.feetRange[row]
+                case 1: return self.parent.inches = self.parent.inchesRange[row]
+                default: break
             }
         }
     }

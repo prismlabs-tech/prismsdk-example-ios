@@ -6,17 +6,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PrismSDK
 import SwiftUI
+import PrismSDK
 
 extension Sex {
     var name: LocalizedStringKey {
         switch self {
-        case .male: return "UserSex.Male"
-        case .female: return "UserSex.Female"
-        case .neutral: return "UserSex.NonBinary"
-        @unknown default:
-            fatalError()
+            case .male: return "UserSex.Male"
+            case .female: return "UserSex.Female"
+            case .neutral: return "UserSex.NonBinary"
         }
     }
 }
@@ -24,20 +22,18 @@ extension Sex {
 extension Sex {
     var rawValue: RawValue {
         switch self {
-        case .male: return "male"
-        case .female: return "female"
-        case .neutral: return "neutral"
-        @unknown default:
-            fatalError()
+            case .male: return "male"
+            case .female: return "female"
+            case .neutral: return "neutral"
         }
     }
 
     init?(rawValue: RawValue) {
         switch rawValue {
-        case "male": self = .male
-        case "female": self = .female
-        case "neutral": self = .neutral
-        default: return nil
+            case "male": self = .male
+            case "female": self = .female
+            case "neutral": self = .neutral
+            default: return nil
         }
     }
 }

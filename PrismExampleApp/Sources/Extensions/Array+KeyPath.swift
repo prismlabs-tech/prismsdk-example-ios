@@ -10,7 +10,7 @@ import Foundation
 
 extension Array {
     func sorted<T: Comparable>(by keyPath: KeyPath<Element, T>, isAscending: Bool = true) -> [Element] {
-        self.sorted {
+        return sorted {
             let lhs = $0[keyPath: keyPath]
             let rhs = $1[keyPath: keyPath]
             return isAscending ? lhs < rhs : lhs > rhs
@@ -18,6 +18,6 @@ extension Array {
     }
 
     func map<T>(_ keyPath: KeyPath<Element, T>) -> [T] {
-        self.map { $0[keyPath: keyPath] }
+        return self.map { $0[keyPath: keyPath] }
     }
 }

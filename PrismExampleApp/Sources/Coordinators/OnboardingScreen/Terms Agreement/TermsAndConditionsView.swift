@@ -13,13 +13,9 @@ struct TermsAndConditionsView: View {
     @EnvironmentObject private var apiClient: ApiClient
 
     @Preference(\.agreedToTerms) private var agreedToTerms: Bool
+    @Preference(\.agreedToSharingData) private var agreedToSharingData: Bool
     @Preference(\.userEmail) private var userEmail: String
-    @Preference(\.onboardingComplete) private var onboardingComplete: Bool
-
-    @State private var viewedTerms: Bool = false
-    @State private var presentingSafariView: Bool = false
-    @State private var action: Int? = 0
-
+    
     @Binding var isPresented: Bool
     
     var body: some View {
@@ -41,8 +37,9 @@ struct TermsAndConditionsView: View {
             
             Button {
                 HapticFeedback.light()
-                self.action = 1
                 self.updateUser()
+                self.isPresented.toggle()
+                self.agreedToSharingData.toggle()
             } label: {
                 Text("Button.Continue", comment: "Profile continue button title")
             }
@@ -52,11 +49,6 @@ struct TermsAndConditionsView: View {
         }
         .navigationBarBackButtonHidden()
         .navigationBarHidden(true)
-        .onChange(of: onboardingComplete) { doneOnboarding in
-            if doneOnboarding {
-                self.isPresented = !doneOnboarding
-            }
-        }
     }
 
     func updateUser() {
@@ -68,10 +60,8 @@ struct TermsAndConditionsView: View {
         Task {
             do {
                 _ = try await UserClient(client: self.apiClient).update(user: data)
-                self.onboardingComplete = true
             } catch {
                 print("Error updating user: \(error)")
-                self.onboardingComplete = true
             }
         }
     }
@@ -81,6 +71,7 @@ struct TermsAndConditionsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             TermsAndConditionsView(isPresented: .constant(true))
+                .environmentObject(ApiClient.preview)
         }
     }
 }

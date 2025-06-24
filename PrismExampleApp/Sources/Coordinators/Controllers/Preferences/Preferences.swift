@@ -17,12 +17,15 @@ enum CacheKeys: String {
     case userWeight
     case userAge
     case profileSet
-    case agreeedToTerms
-    case agreeedToSharingData
+    case agreedToSharingData
+    case agreedToTerms
     case lastScanId
     case hasScanned
+    case avatarEnabled
     case assetConfigId
     case bodyfatMethod
+    case onboardingTutorialCompleted
+    case useScanReview
 }
 
 final class Preferences {
@@ -37,12 +40,13 @@ final class Preferences {
         preferences.userWeight = 167
         preferences.userAge = 42
         preferences.onboardingComplete = false
+        preferences.agreedToSharingData = false
         preferences.agreedToTerms = false
-        preferences.agreedToSharingData = true
         preferences.lastScanId = ""
         preferences.hasScanned = false
-        preferences.assetConfigId = .objTextureBased
+        preferences.assetConfigId = .objTextureBasedV2
         preferences.bodyfatMethod = .coco_bri
+        preferences.onboardingTutorialCompleted = false
     }
 
     /// Sends through the changed key path whenever a change occurs.
@@ -61,20 +65,24 @@ final class Preferences {
     @UserDefault(CacheKeys.userWeight.rawValue) var userWeight: Int = 167
 
     @UserDefault(CacheKeys.userAge.rawValue) var userAge: Int = 42
-
+    
     @UserDefault(CacheKeys.profileSet.rawValue) var onboardingComplete: Bool = false
-
-    @UserDefault(CacheKeys.agreeedToTerms.rawValue) var agreedToTerms: Bool = false
-
-    @UserDefault(CacheKeys.agreeedToSharingData.rawValue) var agreedToSharingData: Bool = true
+    
+    @UserDefault(CacheKeys.agreedToSharingData.rawValue) var agreedToSharingData: Bool = false
+    
+    @UserDefault(CacheKeys.agreedToTerms.rawValue) var agreedToTerms: Bool = false
 
     @UserDefault(CacheKeys.lastScanId.rawValue) var lastScanId: String = ""
 
     @UserDefault(CacheKeys.hasScanned.rawValue) var hasScanned: Bool = false
     
-    @UserDefault(CacheKeys.assetConfigId.rawValue) var assetConfigId: AssetConfigId = .objTextureBased
+    @UserDefault(CacheKeys.assetConfigId.rawValue) var assetConfigId: AssetConfigId = .objTextureBasedV2
+
+    @UserDefault(CacheKeys.onboardingTutorialCompleted.rawValue) var onboardingTutorialCompleted: Bool = false
     
     @UserDefault(CacheKeys.bodyfatMethod.rawValue) var bodyfatMethod: BodyfatMethod = .coco_bri
+    
+    @UserDefault(CacheKeys.useScanReview.rawValue) var useScanReview: Bool = true
 }
 
 @propertyWrapper
